@@ -10,9 +10,13 @@
 		644C10812672421B009A0289 /* bestTenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C10802672421B009A0289 /* bestTenTableViewCell.swift */; };
 		645E0F1A2670BCCE00FD6703 /* variableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E0F192670BCCE00FD6703 /* variableNumber.swift */; };
 		64631F44266E5EC800C47360 /* newGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64631F43266E5EC800C47360 /* newGameViewController.swift */; };
+		646B1281267B57ED00EDE9AB /* SecondCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */; };
+		646B1283267B7FE700EDE9AB /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B1282267B7FE700EDE9AB /* PauseViewController.swift */; };
 		646E5B0F2676136A00202834 /* firstCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E5B0E2676136A00202834 /* firstCustomSegue.swift */; };
 		646E5B11267613A000202834 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E5B10267613A000202834 /* FirstPageViewController.swift */; };
 		647B78E92671AD11001394FA /* Best10TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647B78E82671AD11001394FA /* Best10TableViewController.swift */; };
+		64CEFF0F2679A96A00AE7E3F /* TenTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFF0E2679A96A00AE7E3F /* TenTimesViewController.swift */; };
+		64CEFF112679C79800AE7E3F /* TenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFF102679C79800AE7E3F /* TenTableViewCell.swift */; };
 		64FF64FD26070B3F00098C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FF64FC26070B3F00098C1B /* AppDelegate.swift */; };
 		64FF64FF26070B3F00098C1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FF64FE26070B3F00098C1B /* SceneDelegate.swift */; };
 		64FF650426070B3F00098C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FF650226070B3F00098C1B /* Main.storyboard */; };
@@ -24,9 +28,13 @@
 		644C10802672421B009A0289 /* bestTenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestTenTableViewCell.swift; sourceTree = "<group>"; };
 		645E0F192670BCCE00FD6703 /* variableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableNumber.swift; sourceTree = "<group>"; };
 		64631F43266E5EC800C47360 /* newGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newGameViewController.swift; sourceTree = "<group>"; };
+		646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomSegue.swift; sourceTree = "<group>"; };
+		646B1282267B7FE700EDE9AB /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		646E5B0E2676136A00202834 /* firstCustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstCustomSegue.swift; sourceTree = "<group>"; };
 		646E5B10267613A000202834 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		647B78E82671AD11001394FA /* Best10TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Best10TableViewController.swift; sourceTree = "<group>"; };
+		64CEFF0E2679A96A00AE7E3F /* TenTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenTimesViewController.swift; sourceTree = "<group>"; };
+		64CEFF102679C79800AE7E3F /* TenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenTableViewCell.swift; sourceTree = "<group>"; };
 		64FF64F926070B3F00098C1B /* little game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FF64FC26070B3F00098C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FF64FE26070B3F00098C1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,11 +79,15 @@
 				64FF650226070B3F00098C1B /* Main.storyboard */,
 				646E5B10267613A000202834 /* FirstPageViewController.swift */,
 				646E5B0E2676136A00202834 /* firstCustomSegue.swift */,
+				646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */,
 				647B78E82671AD11001394FA /* Best10TableViewController.swift */,
 				644C10802672421B009A0289 /* bestTenTableViewCell.swift */,
+				64CEFF102679C79800AE7E3F /* TenTableViewCell.swift */,
+				64CEFF0E2679A96A00AE7E3F /* TenTimesViewController.swift */,
 				64631F43266E5EC800C47360 /* newGameViewController.swift */,
 				645E0F192670BCCE00FD6703 /* variableNumber.swift */,
 				64FF650526070B4100098C1B /* Assets.xcassets */,
+				646B1282267B7FE700EDE9AB /* PauseViewController.swift */,
 				64FF650726070B4100098C1B /* LaunchScreen.storyboard */,
 				64FF650A26070B4100098C1B /* Info.plist */,
 			);
@@ -153,11 +165,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FF64FD26070B3F00098C1B /* AppDelegate.swift in Sources */,
+				646B1281267B57ED00EDE9AB /* SecondCustomSegue.swift in Sources */,
 				644C10812672421B009A0289 /* bestTenTableViewCell.swift in Sources */,
 				646E5B0F2676136A00202834 /* firstCustomSegue.swift in Sources */,
 				64631F44266E5EC800C47360 /* newGameViewController.swift in Sources */,
+				646B1283267B7FE700EDE9AB /* PauseViewController.swift in Sources */,
 				646E5B11267613A000202834 /* FirstPageViewController.swift in Sources */,
+				64CEFF0F2679A96A00AE7E3F /* TenTimesViewController.swift in Sources */,
 				645E0F1A2670BCCE00FD6703 /* variableNumber.swift in Sources */,
+				64CEFF112679C79800AE7E3F /* TenTableViewCell.swift in Sources */,
 				64FF64FF26070B3F00098C1B /* SceneDelegate.swift in Sources */,
 				647B78E92671AD11001394FA /* Best10TableViewController.swift in Sources */,
 			);
@@ -309,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4752TZW2QV;
 				INFOPLIST_FILE = "little game/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4752TZW2QV;
 				INFOPLIST_FILE = "little game/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

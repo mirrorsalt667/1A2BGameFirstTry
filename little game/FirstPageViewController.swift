@@ -10,6 +10,7 @@ import UIKit
 class FirstPageViewController: UIViewController {
     
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var tenTimesButton: UIButton!
     @IBOutlet weak var directionsTextView: UITextView!
     
     override func viewDidLoad() {
@@ -18,12 +19,22 @@ class FirstPageViewController: UIViewController {
         directionsTextView.layer.borderWidth = 1.2
         directionsTextView.layer.borderColor = UIColor(named: "MorningYellow")?.cgColor
         directionsTextView.layer.cornerRadius = 7
-        startGameButton.layer.cornerRadius = 5
-        startGameButton.layer.borderColor = UIColor(named: "MorningDarkGreen")?.cgColor
-        startGameButton.layer.borderWidth = 2
+        colorOfButton(in: startGameButton.layer)
+        colorOfButton(in: tenTimesButton.layer)
     }
     @IBAction func startGameButton(_ sender: Any) {
         self.performSegue(withIdentifier: "idFirstSegue", sender: self)
+    }
+    @IBAction func tenTimesButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "tenTimesSegue", sender: self)
+    }
+    
+    
+    //統一按鈕顏色
+    func colorOfButton(in layer: CALayer) {
+        layer.cornerRadius = 5
+        layer.borderColor = UIColor(named: "MorningDarkGreen")?.cgColor
+        layer.borderWidth = 2
     }
     
 

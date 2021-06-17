@@ -24,6 +24,8 @@ var guess4 = 0 //紀錄猜的數字
 var countA = 0
 var countB = 0 //幾Ａ幾Ｂ數量
 
+var inGameBool = false
+
 //紀錄過去猜的數字
 var guessArrays1: [String] = ["", "", "", "", "", "", "", ]
 var guessArrays2: [String] = ["", "", "", "", "", "", "", ]

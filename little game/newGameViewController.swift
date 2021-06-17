@@ -38,6 +38,7 @@ class newGameViewController: UIViewController {
     @IBOutlet weak var PassingGuessTextView1: UITextView!
     @IBOutlet weak var PassingGuessTextView2: UITextView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +49,8 @@ class newGameViewController: UIViewController {
         if let addBestArrays = loadingSavedData() {
             self.addBestRecordArrays = addBestArrays
         }
+        //優先用秒數，次要用數字排序
+        newArraysSetting()
         
         //設定外觀
         buttonContent(in: Number1Button)
@@ -70,6 +73,9 @@ class newGameViewController: UIViewController {
         
         //開始遊戲
         start()
+        if timer != nil {
+            timer?.invalidate()
+        }
         
     }
     
@@ -84,10 +90,23 @@ class newGameViewController: UIViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        if inGameBool == true {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
+                self.startTime()
+            })
+        }
+    }
     
     
     
     //Navigation Button items Action
+    @IBAction func backFirstPageButton(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "backFirstPageSegue", sender: self)
+    }
+    
+    
     @IBAction func bestTenButton(_ sender: Any) {
     }
     @IBAction func resetButton(_ sender: Any) {
@@ -96,51 +115,75 @@ class newGameViewController: UIViewController {
     
     //按鍵動作
     @IBAction func Number1Button(_ sender: Any) {
-        keyNumber = 1
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 1
+            keyInNumber()
+        }
     }
     @IBAction func Number2Button(_ sender: Any) {
-        keyNumber = 2
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 2
+            keyInNumber()
+        }
     }
     @IBAction func Number3Button(_ sender: Any) {
-        keyNumber = 3
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 3
+            keyInNumber()
+        }
     }
     @IBAction func Number4Button(_ sender: Any) {
-        keyNumber = 4
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 4
+            keyInNumber()
+        }
     }
     @IBAction func Number5Button(_ sender: Any) {
-        keyNumber = 5
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 5
+            keyInNumber()
+        }
     }
     @IBAction func Number6Button(_ sender: Any) {
-        keyNumber = 6
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 6
+            keyInNumber()
+        }
     }
     @IBAction func Number7Button(_ sender: Any) {
-        keyNumber = 7
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 7
+            keyInNumber()
+        }
     }
     @IBAction func Number8Button(_ sender: Any) {
-        keyNumber = 8
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 8
+            keyInNumber()
+        }
     }
     @IBAction func Number9Button(_ sender: Any) {
-        keyNumber = 9
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 9
+            keyInNumber()
+        }
     }
     @IBAction func nonameButton(_ sender: Any) {
+        if inGameBool == true {
+            //self.performSegue(withIdentifier: "pauseOne", sender: self)
+        }
     }
     @IBAction func Number0Button(_ sender: Any) {
-        keyNumber = 0
-        keyInNumber()
+        if inGameBool == true {
+            keyNumber = 0
+            keyInNumber()
+        }
     }
     @IBAction func keyBackButton(_ sender: Any) {
-        deleteAction()
+        if inGameBool == true {
+            deleteAction()
+        }
     }
-    
 }
 
 
@@ -249,6 +292,7 @@ extension newGameViewController {
     
     //開始遊戲
     func start() {
+        inGameBool = true
         //若在計時則先停止
         timer?.invalidate()
         //隨機選答案
@@ -348,6 +392,7 @@ extension newGameViewController {
         if countA == 4 { //答對了
             //停止計時，顯示答對了
             timer?.invalidate()
+            inGameBool = false
             getRight()
             //記錄時間
             let currectTime = Date()
@@ -414,6 +459,10 @@ extension newGameViewController {
                 addBestRecordArrays.sort { arrays1, arrays2 in
                     return arrays1.second.compare(arrays2.second, options: .numeric) == .orderedAscending
                 }
+            addBestRecordArrays.sort { array_1, array_2 in
+                return array_1.second.compare(array_2.second, options: .numeric) == .orderedSame
+            }
+            
                 //排序後 將標題列移回第一行
                 let newCount = addBestRecordArrays.count
                 let newRow = newCount - 1
@@ -429,6 +478,10 @@ extension newGameViewController {
                 addBestRecordArrays.sort { arrays1, arrays2 in
                     return arrays1.second.compare(arrays2.second, options: .numeric) == .orderedAscending
                 }
+                addBestRecordArrays.sort { array_1, array_2 in
+                    return array_1.second.compare(array_2.second, options: .numeric) == .orderedSame
+                }
+                
                 //排序後 將標題列移回第一行
                 let newCount = addBestRecordArrays.count
                 let newRow = newCount - 1
@@ -441,6 +494,24 @@ extension newGameViewController {
             }
         }
     }
+    // 增加排序參數
+    func newArraysSetting() {
+        addBestRecordArrays.sort { arrays1, arrays2 in
+            return arrays1.second.compare(arrays2.second, options: .numeric) == .orderedAscending
+        }
+        addBestRecordArrays.sort { array_1, array_2 in
+            return array_1.second.compare(array_2.second, options: .numeric) == .orderedSame
+        }
+    
+        //排序後 將標題列移回第一行
+        let newCount = addBestRecordArrays.count
+        let newRow = newCount - 1
+        let arrayTitle = addBestRecordArrays[newRow]
+        addBestRecordArrays.insert(arrayTitle, at: 0)
+        addBestRecordArrays.remove(at: newCount)
+    }
+    
+    
     
     //儲存排行榜資料
     func saveData() {

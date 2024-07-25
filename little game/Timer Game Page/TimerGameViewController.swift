@@ -11,10 +11,11 @@ import UIKit
 final class TimerGameViewController: UIViewController {
     private let style = TimerGamePageStyle()
     private let model = GameModel()
-
-    private var addBestRecordArrays: [bestRecordList] = [bestRecordList(second: "秒數", guess: "猜", answer: "答案", date: "日期")]
+    private var timer: Timer?
+    /// Show which number is the user guessing
     private var inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
-
+    
+    /// Show guessing times in a single game
     private var guessingTimes: Int = 0 {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -23,7 +24,8 @@ final class TimerGameViewController: UIViewController {
             }
         }
     }
-
+    
+    /// Show the time in a single game
     private var beginingSecond: Int = 0 {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -36,13 +38,21 @@ final class TimerGameViewController: UIViewController {
             }
         }
     }
-
+    
+    /// Record answer the user guess in a round
     private var onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
-    // 紀錄過去猜的數字
+    
+    /// Recording TextView on the left
+    /// Can put 7 items in it
     private var recordArrayLeft = [String]()
+    /// Recording TextView on the right
     private var recordArrayRight = [String]()
+    
+    /// is the game starting?
     private var isInGame = false
+    // private var addBestRecordArrays: [bestRecordList] = [bestRecordList(second: "秒數", guess: "猜", answer: "答案", date: "日期")]
 
+    // MARK: Components
     // Number Pad
     @IBOutlet private var number0Button: UIButton!
     @IBOutlet private var number1Button: UIButton!
@@ -84,27 +94,227 @@ final class TimerGameViewController: UIViewController {
 //        newArraysSetting()
         // 開始遊戲
         start()
-        if g_timer != nil {
-            g_timer?.invalidate()
+        if timer != nil {
+            timer?.invalidate()
         }
     }
 
     override func viewDidDisappear(_: Bool) {
-        // 不在畫面內停止計時
-        if g_timer != nil {
-            g_timer?.invalidate()
+        // stop timer when view disappear
+        if timer != nil {
+            timer?.invalidate()
         }
     }
 
     override func viewDidAppear(_: Bool) {
         if isInGame == true {
-            g_timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                 self.beginingSecond += 1
             })
         }
     }
+}
 
-    // MARK: - Action
+// MARK: - Methods
+
+extension TimerGameViewController {
+    private func setAppearanceAndInitial() {
+        guessingTimes = 0
+        beginingSecond = 0
+
+        style.numberButtonStyle(number1Button)
+        style.numberButtonStyle(number2Button)
+        style.numberButtonStyle(number3Button)
+        style.numberButtonStyle(number4Button)
+        style.numberButtonStyle(number5Button)
+        style.numberButtonStyle(number6Button)
+        style.numberButtonStyle(number7Button)
+        style.numberButtonStyle(number8Button)
+        style.numberButtonStyle(number9Button)
+        style.numberButtonStyle(number0Button)
+        style.numberButtonStyle(keyBackButton)
+        style.numberButtonStyle(pauseButton)
+
+        style.textViewStyle(recordingNumberTextViewLeft.layer)
+        style.textViewStyle(recordingNumberTextViewRight.layer)
+        recordingNumberTextViewLeft.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        recordingNumberTextViewRight.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+    }
+
+    /// number pad action
+    private func keyInNumber(_ touchNumber: Int) {
+        // which is empty
+        if inputProcess.isFirstEmpty {
+            inputProcess.isFirstEmpty = false
+            style.fillLabelColor(showNumberLabel1, text: String(touchNumber))
+            onceRecordNumbers.firstNumber = touchNumber
+        } else if inputProcess.isSecondEmpty {
+            inputProcess.isSecondEmpty = false
+            style.fillLabelColor(showNumberLabel2, text: String(touchNumber))
+            onceRecordNumbers.secondNumber = touchNumber
+        } else if inputProcess.isThirdEmpty {
+            inputProcess.isThirdEmpty = false
+            style.fillLabelColor(showNumberLabel3, text: String(touchNumber))
+            onceRecordNumbers.thirdNumber = touchNumber
+        } else {
+            inputProcess.isFourthEmpty = false
+            style.fillLabelColor(showNumberLabel4, text: String(touchNumber))
+            onceRecordNumbers.fourthNumber = touchNumber
+            guessingTimes += 1
+            let result = model.checkResponse(onceRecordNumbers)
+            afterResult(result)
+        }
+    }
+
+    /// delete the last move
+    private func deleteNumber() {
+        // which is empty
+        if inputProcess.isFirstEmpty == false, inputProcess.isSecondEmpty == true {
+            style.emptyLabelColor(showNumberLabel1)
+            onceRecordNumbers.firstNumber = 0
+            inputProcess.isFirstEmpty = true
+        } else if inputProcess.isSecondEmpty == false, inputProcess.isThirdEmpty == true {
+            style.emptyLabelColor(showNumberLabel2)
+            onceRecordNumbers.secondNumber = 0
+            inputProcess.isSecondEmpty = true
+        } else if inputProcess.isThirdEmpty == false, inputProcess.isFourthEmpty == true {
+            style.emptyLabelColor(showNumberLabel3)
+            onceRecordNumbers.thirdNumber = 0
+            inputProcess.isThirdEmpty = true
+        }
+    }
+
+    /// Doing action after get result of guessing
+    private func afterResult(_ result: GameResult) {
+        switch result {
+        case .victory:
+            victoryWindow()
+            gameEnd()
+            // leaderboard handling
+//            // 加入排行榜
+//            theBestRecord()
+//            // 儲存資料
+//            saveData()
+
+        case .defeat:
+            print("Defeat! not happened in this mode.")
+
+        case let .continuing(abCounter):
+            print("message \(abCounter)")
+            // record on the board
+            let recordText = "\(onceRecordNumbers.firstNumber)\(onceRecordNumbers.secondNumber)\(onceRecordNumbers.thirdNumber)\(onceRecordNumbers.fourthNumber) - \(abCounter.aCounter) A \(abCounter.bCounter) B"
+            let leftLength = recordArrayLeft.count
+            let rightLength = recordArrayRight.count
+            if leftLength < 7 { // 7 in one column
+                recordArrayLeft.insert(recordText, at: 0)
+            } else {
+                if rightLength >= 7 {
+                    recordArrayRight.remove(at: 6)
+                }
+                recordArrayRight.insert(recordArrayLeft[6], at: 0)
+                recordArrayLeft.remove(at: 6)
+                recordArrayLeft.insert(recordText, at: 0)
+            }
+
+            let contents = generateRecord(recordArrayLeft, recordArrayRight)
+            DispatchQueue.main.async {
+                self.recordingNumberTextViewLeft.text = contents.0
+                self.recordingNumberTextViewRight.text = contents.1
+            }
+            oneRoundReset()
+
+        case let .error(errorType):
+            print("error: \(errorType)")
+        }
+    }
+
+    // MARK: Game Start & Reset
+
+    /// Game Starting
+    private func start() {
+        isInGame = true
+        // stop if it's counting
+        timer?.invalidate()
+        // create a random number
+        model.creatingAnswer()
+        // reset everything
+        resetAll()
+        // starting timer
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.beginingSecond += 1
+        })
+    }
+
+    /// Game is over
+    private func gameEnd() {
+        timer?.invalidate()
+        isInGame = false
+    }
+
+    /// Reset
+    private func resetAll() {
+        onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
+        style.emptyLabelColor(showNumberLabel1)
+        style.emptyLabelColor(showNumberLabel2)
+        style.emptyLabelColor(showNumberLabel3)
+        style.emptyLabelColor(showNumberLabel4)
+        inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
+        guessingTimes = 0
+        beginingSecond = 0
+        recordArrayLeft = []
+        recordArrayRight = []
+        let contents = generateRecord(recordArrayLeft, recordArrayRight)
+        DispatchQueue.main.async {
+            self.recordingNumberTextViewLeft.text = contents.0
+            self.recordingNumberTextViewRight.text = contents.1
+        }
+    }
+
+    /// One round game end
+    private func oneRoundReset() {
+        onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
+        inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
+        style.emptyLabelColor(showNumberLabel1)
+        style.emptyLabelColor(showNumberLabel2)
+        style.emptyLabelColor(showNumberLabel3)
+        style.emptyLabelColor(showNumberLabel4)
+    }
+
+    /// Show the victory window via an alart
+    private func victoryWindow() {
+        guard let answer = model.theAnswer else { return }
+        let alert = UIAlertController(title: "正確", message: "答案：\(answer.firstNumber)\(answer.secondNumber)\(answer.thirdNumber)\(answer.fourthNumber), 時間：\(beginingSecond)秒", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    /// Reload the recording board
+    /// RETURN: (left content, right content)
+    private func generateRecord(_ left: [String], _ right: [String]) -> (String, String) {
+        var leftContent = ""
+        var rightContent = ""
+        for item in left {
+            leftContent = leftContent + item + "\n"
+        }
+        for item in right {
+            rightContent = rightContent + item + "\n"
+        }
+        return (leftContent, rightContent)
+    }
+
+    // MARK: - Prepare
+
+    /// 傳資料到排行榜頁面
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if let controller = segue.destination as? Best10TableViewController {
+//            controller.thisArrays = addBestRecordArrays
+        }
+    }
+}
+
+// MARK: - Button Action
+
+extension TimerGameViewController {
 
     @IBAction private func backFirstPageButton(_ sender: Any) {
         performSegue(withIdentifier: "backFirstPageSegue", sender: self)
@@ -185,201 +395,6 @@ final class TimerGameViewController: UIViewController {
     @IBAction private func keyBackButton(_: Any) {
         if isInGame {
             deleteNumber()
-        }
-    }
-}
-
-// MARK: - Methods
-
-extension TimerGameViewController {
-    private func setAppearanceAndInitial() {
-        guessingTimes = 0
-        beginingSecond = 0
-
-        style.numberButtonStyle(number1Button)
-        style.numberButtonStyle(number2Button)
-        style.numberButtonStyle(number3Button)
-        style.numberButtonStyle(number4Button)
-        style.numberButtonStyle(number5Button)
-        style.numberButtonStyle(number6Button)
-        style.numberButtonStyle(number7Button)
-        style.numberButtonStyle(number8Button)
-        style.numberButtonStyle(number9Button)
-        style.numberButtonStyle(number0Button)
-        style.numberButtonStyle(keyBackButton)
-        style.numberButtonStyle(pauseButton)
-
-        style.textViewStyle(recordingNumberTextViewLeft.layer)
-        style.textViewStyle(recordingNumberTextViewRight.layer)
-        recordingNumberTextViewLeft.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        recordingNumberTextViewRight.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-    }
-
-    /// number pad action
-    private func keyInNumber(_ touchNumber: Int) {
-        if inputProcess.isFirstEmpty {
-            inputProcess.isFirstEmpty = false
-            style.fillLabelColor(showNumberLabel1, text: String(touchNumber))
-            onceRecordNumbers.firstNumber = touchNumber
-        } else if inputProcess.isSecondEmpty {
-            inputProcess.isSecondEmpty = false
-            style.fillLabelColor(showNumberLabel2, text: String(touchNumber))
-            onceRecordNumbers.secondNumber = touchNumber
-        } else if inputProcess.isThirdEmpty {
-            inputProcess.isThirdEmpty = false
-            style.fillLabelColor(showNumberLabel3, text: String(touchNumber))
-            onceRecordNumbers.thirdNumber = touchNumber
-        } else {
-            inputProcess.isFourthEmpty = false
-            style.fillLabelColor(showNumberLabel4, text: String(touchNumber))
-            onceRecordNumbers.fourthNumber = touchNumber
-            guessingTimes += 1
-            let result = model.checkResponse(onceRecordNumbers)
-            afterResult(result)
-        }
-    }
-
-    /// delete the last move
-    private func deleteNumber() {
-        if inputProcess.isFirstEmpty == false, inputProcess.isSecondEmpty == true {
-            style.emptyLabelColor(showNumberLabel1)
-            onceRecordNumbers.firstNumber = 0
-            inputProcess.isFirstEmpty = true
-        } else if inputProcess.isSecondEmpty == false, inputProcess.isThirdEmpty == true {
-            style.emptyLabelColor(showNumberLabel2)
-            onceRecordNumbers.secondNumber = 0
-            inputProcess.isSecondEmpty = true
-        } else if inputProcess.isThirdEmpty == false, inputProcess.isFourthEmpty == true {
-            style.emptyLabelColor(showNumberLabel3)
-            onceRecordNumbers.thirdNumber = 0
-            inputProcess.isThirdEmpty = true
-        }
-    }
-
-    /// Doing action after get result of guessing
-    private func afterResult(_ result: GameResult) {
-        switch result {
-        case .victory:
-            victoryWindow()
-            gameEnd()
-            // leaderboard handling
-//            // 加入排行榜
-//            theBestRecord()
-//            // 儲存資料
-//            saveData()
-
-        case .defeat:
-            print("Defeat! not happened in this mode.")
-
-        case let .continuing(abCounter):
-            print("message \(abCounter)")
-            // record on the board
-            let recordText = "\(onceRecordNumbers.firstNumber)\(onceRecordNumbers.secondNumber)\(onceRecordNumbers.thirdNumber)\(onceRecordNumbers.fourthNumber) - \(abCounter.aCounter) A \(abCounter.bCounter) B"
-            let leftLength = recordArrayLeft.count
-            let rightLength = recordArrayRight.count
-            if leftLength < 7 { // 7 in one column
-                recordArrayLeft.insert(recordText, at: 0)
-            } else {
-                if rightLength >= 7 {
-                    recordArrayRight.remove(at: 6)
-                }
-                recordArrayRight.insert(recordArrayLeft[6], at: 0)
-                recordArrayLeft.remove(at: 6)
-                recordArrayLeft.insert(recordText, at: 0)
-            }
-
-            let contents = generateRecord(recordArrayLeft, recordArrayRight)
-            DispatchQueue.main.async {
-                self.recordingNumberTextViewLeft.text = contents.0
-                self.recordingNumberTextViewRight.text = contents.1
-            }
-            oneRoundReset()
-
-        case let .error(errorType):
-            print("error: \(errorType)")
-        }
-    }
-
-    // MARK: Game Start & Reset
-
-    /// Game Starting
-    private func start() {
-        isInGame = true
-        // stop if it's counting
-        g_timer?.invalidate()
-        // create a random number
-        model.creatingAnswer()
-        // reset everything
-        resetAll()
-        // starting timer
-        g_timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            self.beginingSecond += 1
-        })
-    }
-
-    /// Game is over
-    private func gameEnd() {
-        g_timer?.invalidate()
-        isInGame = false
-    }
-
-    /// Reset
-    private func resetAll() {
-        onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
-        style.emptyLabelColor(showNumberLabel1)
-        style.emptyLabelColor(showNumberLabel2)
-        style.emptyLabelColor(showNumberLabel3)
-        style.emptyLabelColor(showNumberLabel4)
-        inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
-        guessingTimes = 0
-        beginingSecond = 0
-        recordArrayLeft = []
-        recordArrayRight = []
-        let contents = generateRecord(recordArrayLeft, recordArrayRight)
-        DispatchQueue.main.async {
-            self.recordingNumberTextViewLeft.text = contents.0
-            self.recordingNumberTextViewRight.text = contents.1
-        }
-    }
-
-    /// One round game end
-    private func oneRoundReset() {
-        onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
-        inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
-        style.emptyLabelColor(showNumberLabel1)
-        style.emptyLabelColor(showNumberLabel2)
-        style.emptyLabelColor(showNumberLabel3)
-        style.emptyLabelColor(showNumberLabel4)
-    }
-
-    /// Show the victory window via an alart
-    private func victoryWindow() {
-        guard let answer = model.theAnswer else { return }
-        let alert = UIAlertController(title: "正確", message: "答案：\(answer.firstNumber)\(answer.secondNumber)\(answer.thirdNumber)\(answer.fourthNumber), 時間：\(beginingSecond)秒", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-
-    /// Reload the recording board
-    /// RETURN: (left content, right content)
-    private func generateRecord(_ left: [String], _ right: [String]) -> (String, String) {
-        var leftContent = ""
-        var rightContent = ""
-        for item in left {
-            leftContent = leftContent + item + "\n"
-        }
-        for item in right {
-            rightContent = rightContent + item + "\n"
-        }
-        return (leftContent, rightContent)
-    }
-
-    // MARK: - Prepare
-
-    /// 傳資料到排行榜頁面
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if let controller = segue.destination as? Best10TableViewController {
-            controller.thisArrays = addBestRecordArrays
         }
     }
 }

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M6F-8b-d5m">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Front Page View Controller-->
+        <scene sceneID="uUf-mU-OAv">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="M6F-8b-d5m" customClass="FrontPageViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qQB-gx-SAf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC0-IO-WKD">
+                                <rect key="frame" x="96.666666666666686" y="626" width="95" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="  計時模式 ">
+                                    <color key="titleColor" name="MorningDarkGreen"/>
+                                </state>
+                                <connections>
+                                    <action selector="startGameButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="ZtL-gZ-h5L"/>
+                                    <segue destination="KUJ-l6-Fw4" kind="show" identifier="idFirstSegue" customClass="firstCustomSegue" customModule="little_game" customModuleProvider="target" id="H3a-qN-aRI"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DYS-Dt-v9K">
+                                <rect key="frame" x="76.666666666666686" y="299" width="240" height="127"/>
+                                <color key="backgroundColor" name="MorningBlue1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="aGI-kb-k5T"/>
+                                    <constraint firstAttribute="height" constant="127" id="pLh-tU-BxL"/>
+                                </constraints>
+                                <string key="text">
+   猜猜數字是多少呢？
+    *Ａ代表數字、位置皆正確
+    *Ｂ代表數字對、位置錯
+    *數字不重複</string>
+                                <color key="textColor" name="customLabel"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guessing game" translatesAutoresizingMaskIntoConstraints="NO" id="FlH-e6-FUJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="374"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-b2-YXF">
+                                <rect key="frame" x="201.66666666666666" y="626" width="101.99999999999997" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="  10次模式  ">
+                                    <color key="titleColor" name="MorningDarkGreen"/>
+                                </state>
+                                <connections>
+                                    <action selector="tenTimesButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="w7q-zR-PRw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="l6N-uG-IjB"/>
+                        <color key="backgroundColor" name="MorningBlue1"/>
+                        <constraints>
+                            <constraint firstItem="DYS-Dt-v9K" firstAttribute="top" secondItem="FlH-e6-FUJ" secondAttribute="bottom" constant="-75" id="6FN-RP-aig"/>
+                            <constraint firstItem="DYS-Dt-v9K" firstAttribute="bottom" secondItem="qQB-gx-SAf" secondAttribute="centerY" id="Af7-ZK-S5a"/>
+                            <constraint firstItem="PpH-b2-YXF" firstAttribute="leading" secondItem="qQB-gx-SAf" secondAttribute="centerX" constant="5" id="Qcy-nJ-ndg"/>
+                            <constraint firstItem="MC0-IO-WKD" firstAttribute="top" secondItem="DYS-Dt-v9K" secondAttribute="bottom" constant="200" id="aE6-B9-pEf"/>
+                            <constraint firstItem="FlH-e6-FUJ" firstAttribute="leading" secondItem="qQB-gx-SAf" secondAttribute="leading" id="aGx-Eo-wYM"/>
+                            <constraint firstItem="FlH-e6-FUJ" firstAttribute="top" secondItem="qQB-gx-SAf" secondAttribute="top" id="bh2-IJ-HgR"/>
+                            <constraint firstAttribute="trailing" secondItem="FlH-e6-FUJ" secondAttribute="trailing" id="cBP-QD-zzL"/>
+                            <constraint firstItem="PpH-b2-YXF" firstAttribute="top" secondItem="DYS-Dt-v9K" secondAttribute="bottom" constant="200" id="dBc-V8-mj8"/>
+                            <constraint firstItem="FlH-e6-FUJ" firstAttribute="centerX" secondItem="qQB-gx-SAf" secondAttribute="centerX" id="eSz-rs-Aif"/>
+                            <constraint firstItem="PpH-b2-YXF" firstAttribute="leading" secondItem="MC0-IO-WKD" secondAttribute="trailing" constant="10" id="hKa-mh-24Y"/>
+                            <constraint firstItem="DYS-Dt-v9K" firstAttribute="centerX" secondItem="qQB-gx-SAf" secondAttribute="centerX" id="qvN-ag-w5x"/>
+                            <constraint firstItem="MC0-IO-WKD" firstAttribute="trailing" secondItem="qQB-gx-SAf" secondAttribute="centerX" constant="-5" id="yWL-AA-xFE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wl8-Io-3ZW"/>
+                    <connections>
+                        <outlet property="explanationTextView" destination="DYS-Dt-v9K" id="0Ba-8P-Heu"/>
+                        <outlet property="startGameButton" destination="MC0-IO-WKD" id="T3t-4U-vfS"/>
+                        <outlet property="tenTimesButton" destination="PpH-b2-YXF" id="ZV5-Vl-4Oc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omK-U1-Xqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2710" y="1136"/>
+        </scene>
+        <!--TimerGame-->
+        <scene sceneID="ZnM-Sb-0lM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimerGame" id="KUJ-l6-Fw4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TCa-93-6gb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubA-bB-3W7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2062" y="894"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="guessing game" width="752" height="256"/>
+        <namedColor name="MorningBlue1">
+            <color red="0.73299998044967651" green="0.875" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningDarkGreen">
+            <color red="0.52499997615814209" green="0.7369999885559082" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="customLabel">
+            <color red="0.72200000286102295" green="0.5690000057220459" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uCO-Zf-fZH">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--1A2B-->
+        <scene sceneID="IwM-kd-ivg">
+            <objects>
+                <viewController id="baX-bk-de4" customClass="TimerGameViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qGd-ff-YR3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bOS-i4-v5p">
+                                <rect key="frame" x="5" y="113" width="383" height="695"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zeS-Hs-Mxy">
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="21.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-qT-2fP">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.66666666666666" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="MorningDarkGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2o-5G-rpG">
+                                                <rect key="frame" x="191.66666666666663" y="0.0" width="191.33333333333337" height="21.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" name="MorningDarkGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mwy-4j-hcn">
+                                        <rect key="frame" x="0.0" y="28.666666666666657" width="383" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSf-HT-Zhz">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ic-Pr-9Ao">
+                                                <rect key="frame" x="64" y="0.0" width="63.666666666666657" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHY-WK-p4y">
+                                                <rect key="frame" x="127.66666666666666" y="0.0" width="64" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deH-bH-KPu">
+                                                <rect key="frame" x="191.66666666666666" y="0.0" width="63.666666666666657" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3i-RJ-8vT">
+                                                <rect key="frame" x="255.33333333333331" y="0.0" width="64" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-Aq-xTF">
+                                                <rect key="frame" x="319.33333333333331" y="0.0" width="63.666666666666686" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-Og-QY9">
+                                        <rect key="frame" x="0.0" y="95.666666666666657" width="383" height="211.99999999999997"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjX-Yj-XNE">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.66666666666666" height="212"/>
+                                                <color key="backgroundColor" name="MorningGreen"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="212" id="Kgr-Cg-PDV"/>
+                                                </constraints>
+                                                <string key="text">2324 2A2B
+1234
+2324
+23242
+34232
+3234
+3432</string>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="1234" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnE-SF-Lrr">
+                                                <rect key="frame" x="191.66666666666663" y="0.0" width="191.33333333333337" height="212"/>
+                                                <color key="backgroundColor" name="MorningGreen"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="212" id="eb9-RI-DJd"/>
+                                                </constraints>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTP-FZ-k0n">
+                                        <rect key="frame" x="0.0" y="314.66666666666674" width="383" height="283.33333333333326"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y5q-aP-jdu">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="283.33333333333331"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aHL-Yb-iBp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="383" height="68.666666666666671"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzP-BL-UHO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="Ngb-3h-yqB"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4W-Kw-e7K">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="z4W-Kw-e7K" secondAttribute="height" multiplier="1:1" id="zgo-aP-wFE"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="1.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="number1Button:" destination="baX-bk-de4" eventType="touchUpInside" id="nDv-D7-py4"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAf-yu-641">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="uAf-yu-641" secondAttribute="height" multiplier="1:1" id="sDW-zE-PNr"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="2.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number2Button:" destination="baX-bk-de4" eventType="touchUpInside" id="PM6-mg-Bvt"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mj7-r4-uqq">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Mj7-r4-uqq" secondAttribute="height" multiplier="1:1" id="6Nr-yr-Pr1"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="3.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number3Button:" destination="baX-bk-de4" eventType="touchUpInside" id="3eq-nz-ob1"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5h-Lq-Mzf">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="T9z-jn-ORK"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="uAf-yu-641" firstAttribute="centerX" secondItem="aHL-Yb-iBp" secondAttribute="centerX" id="Rv5-uy-uuj"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R8m-Yf-oW6">
+                                                        <rect key="frame" x="0.0" y="71.666666666666629" width="383" height="68.666666666666686"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEu-jB-1dt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="voT-vZ-GpS"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htc-H4-v5q">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Htc-H4-v5q" secondAttribute="height" multiplier="1:1" id="5zc-X5-ReL"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="4.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="number4Button:" destination="baX-bk-de4" eventType="touchUpInside" id="QTQ-4f-82A"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR5-TO-RWX">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="MR5-TO-RWX" secondAttribute="height" multiplier="1:1" id="NSw-f8-zmU"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="5.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number5Button:" destination="baX-bk-de4" eventType="touchUpInside" id="m2F-hY-FOI"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUa-3m-Dai">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="SUa-3m-Dai" secondAttribute="height" multiplier="1:1" id="dMv-iS-UR0"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="6.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number6Button:" destination="baX-bk-de4" eventType="touchUpInside" id="lgs-Dg-oPb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tqx-LI-Ftk">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="dUg-bM-dim"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="MR5-TO-RWX" firstAttribute="centerX" secondItem="R8m-Yf-oW6" secondAttribute="centerX" id="53T-uK-kXy"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QQX-hv-g6k">
+                                                        <rect key="frame" x="0.0" y="143.33333333333331" width="383" height="68.333333333333314"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXN-7v-B5W">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="RL0-oo-omd"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdK-Ic-EAC">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="AdK-Ic-EAC" secondAttribute="height" multiplier="1:1" id="QPb-Oc-dhe"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="7.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="number7Button:" destination="baX-bk-de4" eventType="touchUpInside" id="WH6-Po-wpI"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElK-hI-xvL">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="ElK-hI-xvL" secondAttribute="height" multiplier="1:1" id="UyN-YF-n0I"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="8.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number8Button:" destination="baX-bk-de4" eventType="touchUpInside" id="ZIi-ge-rZy"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgo-DP-AEs">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="fgo-DP-AEs" secondAttribute="height" multiplier="1:1" id="avD-Vv-LyQ"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="9.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number9Button:" destination="baX-bk-de4" eventType="touchUpInside" id="ILA-X2-heA"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI5-b0-hUm">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="Lf0-yb-UmT"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="ElK-hI-xvL" firstAttribute="centerX" secondItem="QQX-hv-g6k" secondAttribute="centerX" id="ZqJ-GI-JhX"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-mU-cJz">
+                                                        <rect key="frame" x="0.0" y="214.66666666666669" width="383" height="68.666666666666686"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zh-sn-ljc">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="afY-Dh-SY4"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-uS-3VP">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="kuu-uS-3VP" secondAttribute="height" multiplier="1:1" id="f5e-EW-mgK"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="pause.rectangle" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="pauseButton:" destination="baX-bk-de4" eventType="touchUpInside" id="tNg-tY-nxa"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fT-Bz-vhZ">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="6fT-Bz-vhZ" secondAttribute="height" multiplier="1:1" id="ZUO-VA-RVH"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="0.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="number0Button:" destination="baX-bk-de4" eventType="touchUpInside" id="JaA-dJ-Wnb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZd-zA-hP8">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="bZd-zA-hP8" secondAttribute="height" multiplier="1:1" id="daG-Zn-bJy"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="delete.left" catalog="system">
+                                                                    <color key="titleColor" name="MorningOrange"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keyBackButton:" destination="baX-bk-de4" eventType="touchUpInside" id="e1u-7w-bB2"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTX-aa-XNR">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="R7w-XD-C2k"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="6fT-Bz-vhZ" firstAttribute="centerX" secondItem="0Ca-mU-cJz" secondAttribute="centerX" id="63l-yz-jZ9"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="customBackground"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="MorningGray"/>
+                                        <constraints>
+                                            <constraint firstItem="Y5q-aP-jdu" firstAttribute="top" secondItem="gTP-FZ-k0n" secondAttribute="top" id="ce2-eB-db7"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y5q-aP-jdu" secondAttribute="trailing" id="jNj-tt-dDE"/>
+                                            <constraint firstAttribute="bottom" secondItem="Y5q-aP-jdu" secondAttribute="bottom" id="jZr-Cz-zqE"/>
+                                            <constraint firstItem="Y5q-aP-jdu" firstAttribute="leading" secondItem="gTP-FZ-k0n" secondAttribute="leading" id="ryF-ea-m84"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="made by stephen" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX0-h9-PTu">
+                                        <rect key="frame" x="0.0" y="605" width="383" height="90"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <color key="textColor" name="customBackground"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BvN-ph-0RH"/>
+                        <color key="backgroundColor" name="customBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bOS-i4-v5p" secondAttribute="trailing" constant="5" id="45U-t0-mk3"/>
+                            <constraint firstItem="BvN-ph-0RH" firstAttribute="bottom" secondItem="bOS-i4-v5p" secondAttribute="bottom" constant="10" id="DWz-34-Xe7"/>
+                            <constraint firstItem="bOS-i4-v5p" firstAttribute="top" secondItem="BvN-ph-0RH" secondAttribute="top" constant="10" id="H5P-vo-0y3"/>
+                            <constraint firstItem="bOS-i4-v5p" firstAttribute="leading" secondItem="BvN-ph-0RH" secondAttribute="leading" constant="5" id="ZxC-pH-c8A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="1A2B" id="mbx-R4-o8V">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Home" image="house.fill" catalog="system" id="Sji-BP-3u6">
+                                <color key="tintColor" name="MorningYellow"/>
+                                <connections>
+                                    <action selector="backFirstPageButton:" destination="baX-bk-de4" id="BRj-1I-AMo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="best 20" id="zuC-Ha-jcM">
+                                <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system" symbolScale="default"/>
+                                <color key="tintColor" name="MorningYellow"/>
+                                <connections>
+                                    <action selector="bestTenButton:" destination="baX-bk-de4" id="poa-WX-HG4"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="重來" id="nKm-8C-oUP">
+                            <color key="tintColor" name="MorningYellow"/>
+                            <connections>
+                                <action selector="resetButton:" destination="baX-bk-de4" id="2sf-Vh-gdV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="countTimeLabel" destination="v2o-5G-rpG" id="bT5-5L-T5g"/>
+                        <outlet property="gamingTimesLabel" destination="6cp-qT-2fP" id="pI1-6A-PbT"/>
+                        <outlet property="keyBackButton" destination="bZd-zA-hP8" id="SWX-Uh-iFV"/>
+                        <outlet property="number0Button" destination="6fT-Bz-vhZ" id="EdU-rn-pJt"/>
+                        <outlet property="number1Button" destination="z4W-Kw-e7K" id="nyc-sp-hwl"/>
+                        <outlet property="number2Button" destination="uAf-yu-641" id="U5P-Vn-Ecd"/>
+                        <outlet property="number3Button" destination="Mj7-r4-uqq" id="g1S-PN-N2g"/>
+                        <outlet property="number4Button" destination="Htc-H4-v5q" id="61B-8U-ib9"/>
+                        <outlet property="number5Button" destination="MR5-TO-RWX" id="TxT-uZ-OIC"/>
+                        <outlet property="number6Button" destination="SUa-3m-Dai" id="kdJ-Gb-djG"/>
+                        <outlet property="number7Button" destination="AdK-Ic-EAC" id="zhu-fM-0Jw"/>
+                        <outlet property="number8Button" destination="ElK-hI-xvL" id="Itn-j3-vfR"/>
+                        <outlet property="number9Button" destination="fgo-DP-AEs" id="IsF-Gb-TjJ"/>
+                        <outlet property="pauseButton" destination="kuu-uS-3VP" id="xfB-kg-ZLt"/>
+                        <outlet property="recordingNumberTextViewLeft" destination="xjX-Yj-XNE" id="xiU-SA-2j2"/>
+                        <outlet property="recordingNumberTextViewRight" destination="gnE-SF-Lrr" id="7gb-YU-jGR"/>
+                        <outlet property="showNumberLabel1" destination="0ic-Pr-9Ao" id="Nzi-hr-VFi"/>
+                        <outlet property="showNumberLabel2" destination="WHY-WK-p4y" id="xC1-Du-5JQ"/>
+                        <outlet property="showNumberLabel3" destination="deH-bH-KPu" id="nad-vG-GIN"/>
+                        <outlet property="showNumberLabel4" destination="T3i-RJ-8vT" id="8QK-Pe-gKv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ABx-gj-0tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-914" y="999"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hAC-Hj-rer">
+            <objects>
+                <navigationController storyboardIdentifier="mainPage" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="uCO-Zf-fZH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="f8X-Hn-Ma3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ffY-bN-LDU">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MorningYellow"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MorningYellow"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="MorningYellow"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="baX-bk-de4" kind="relationship" relationship="rootViewController" id="P9k-aa-zhl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upJ-ss-1Yo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1830" y="715"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="0.square" catalog="system" width="128" height="114"/>
+        <image name="1.square" catalog="system" width="128" height="114"/>
+        <image name="2.square" catalog="system" width="128" height="114"/>
+        <image name="3.square" catalog="system" width="128" height="114"/>
+        <image name="4.square" catalog="system" width="128" height="114"/>
+        <image name="5.square" catalog="system" width="128" height="114"/>
+        <image name="6.square" catalog="system" width="128" height="114"/>
+        <image name="7.square" catalog="system" width="128" height="114"/>
+        <image name="8.square" catalog="system" width="128" height="114"/>
+        <image name="9.square" catalog="system" width="128" height="114"/>
+        <image name="delete.left" catalog="system" width="128" height="102"/>
+        <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="pause.rectangle" catalog="system" width="128" height="93"/>
+        <namedColor name="MorningBlue3">
+            <color red="0.41600000858306885" green="0.59600001573562622" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningDarkGreen">
+            <color red="0.52499997615814209" green="0.7369999885559082" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningGray">
+            <color red="0.90200001001358032" green="0.92199999094009399" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningGreen">
+            <color red="0.71799999475479126" green="0.84299999475479126" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningOrange">
+            <color red="0.96899998188018799" green="0.6940000057220459" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningYellow">
+            <color red="0.99199998378753662" green="0.81599998474121094" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="customBackground">
+            <color red="0.90200001001358032" green="0.92199999094009399" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

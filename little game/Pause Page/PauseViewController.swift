@@ -8,20 +8,16 @@
 import UIKit
 
 class PauseViewController: UIViewController {
-    
-    
-    @IBOutlet weak var pauseImageView: UIImageView!
-    
-    
+    @IBOutlet var pauseImageView: UIImageView!
+
     let urlStr = "https://live.staticflickr.com/65535/51252223682_fe998a311f_o.gif"
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //下載並顯示GIF圖片
+
+        // 下載並顯示GIF圖片
         if let url = URL(string: urlStr) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            URLSession.shared.dataTask(with: url) { data, _, _ in
                 if let data = data {
                     let cfData = data as CFData
                     CGAnimateImageDataWithBlock(cfData, nil) { _, cgImage, _ in
@@ -33,5 +29,4 @@ class PauseViewController: UIViewController {
             }.resume()
         }
     }
-    
 }

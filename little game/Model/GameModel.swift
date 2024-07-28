@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct NumbersAndAB {
+    let numbers: FourNumbersModel
+    let abs: ABCounterModel
+}
+
 struct FourNumbersModel {
     var firstNumber: Int
     var secondNumber: Int
@@ -39,6 +44,10 @@ enum GameError: Error {
 
 final class GameModel {
     var theAnswer: FourNumbersModel?
+    
+    func fourNumberToOneString(_ input: FourNumbersModel) -> String {
+        return "\(input.firstNumber)\(input.secondNumber)\(input.thirdNumber)\(input.fourthNumber)"
+    }
 
     /// Create an answer
     func creatingAnswer() {

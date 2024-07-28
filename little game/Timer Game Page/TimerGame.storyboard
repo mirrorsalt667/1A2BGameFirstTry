@@ -403,14 +403,14 @@
                             <barButtonItem title="Home" image="house.fill" catalog="system" id="Sji-BP-3u6">
                                 <color key="tintColor" name="MorningYellow"/>
                                 <connections>
-                                    <action selector="backFirstPageButton:" destination="baX-bk-de4" id="BRj-1I-AMo"/>
+                                    <segue destination="NgP-UW-sBS" kind="unwind" unwindAction="unwindToFront:" id="ruk-Ic-tOs"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="best 20" id="zuC-Ha-jcM">
                                 <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system" symbolScale="default"/>
                                 <color key="tintColor" name="MorningYellow"/>
                                 <connections>
-                                    <action selector="bestTenButton:" destination="baX-bk-de4" id="poa-WX-HG4"/>
+                                    <segue destination="mSc-pS-sGF" kind="show" id="Uo3-mh-ikp"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -445,8 +445,19 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABx-gj-0tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="NgP-UW-sBS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-914" y="999"/>
+        </scene>
+        <!--Leaderboard-->
+        <scene sceneID="XJI-I1-ZVi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Leaderboard" id="mSc-pS-sGF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cyB-96-bUt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVn-En-lYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-262" y="800"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hAC-Hj-rer">

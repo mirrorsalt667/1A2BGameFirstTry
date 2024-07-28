@@ -11,6 +11,7 @@ import UIKit
 final class TimerGameViewController: UIViewController {
     private let style = TimerGamePageStyle()
     private let model = GameModel()
+    private let storeModel = StoreLeaderboardModel()
     private var timer: Timer?
     /// Show which number is the user guessing
     private var inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
@@ -50,7 +51,8 @@ final class TimerGameViewController: UIViewController {
     
     /// is the game starting?
     private var isInGame = false
-    // private var addBestRecordArrays: [bestRecordList] = [bestRecordList(second: "秒數", guess: "猜", answer: "答案", date: "日期")]
+    /// leaderboard data
+    private var records = [LeaderboardData]()
 
     // MARK: Components
     // Number Pad
@@ -87,11 +89,12 @@ final class TimerGameViewController: UIViewController {
             self.recordingNumberTextViewLeft.text = contents.0
             self.recordingNumberTextViewRight.text = contents.1
         }
-//        if let addBestArrays = loadingSavedData() {
-//            addBestRecordArrays = addBestArrays
-//        }
-//        // 優先用秒數，次要用數字排序
-//        newArraysSetting()
+        if let addBestArrays = storeModel.loadingSavedData(mode: .timerMode) {
+            records = addBestArrays
+        }
+        // 優先用秒數，次要用數字排序
+        records = storeModel.sortData(mode: .timerMode, records)
+        
         // 開始遊戲
         start()
         if timer != nil {
@@ -191,16 +194,18 @@ extension TimerGameViewController {
             victoryWindow()
             gameEnd()
             // leaderboard handling
-//            // 加入排行榜
-//            theBestRecord()
-//            // 儲存資料
-//            saveData()
+            // 加入排行榜
+            guard let answer = model.theAnswer else { return }
+            let answerString = model.fourNumberToOneString(answer)
+            let currentTime = model.getCurrentTime()
+            records = storeModel.addNewRecord(mode: .timerMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(guessingTimes), answer: answerString, date: currentTime), records: records)
+            // 儲存資料
+            storeModel.saveData(mode: .timerMode, records)
 
         case .defeat:
             print("Defeat! not happened in this mode.")
 
         case let .continuing(abCounter):
-            print("message \(abCounter)")
             // record on the board
             let recordText = "\(onceRecordNumbers.firstNumber)\(onceRecordNumbers.secondNumber)\(onceRecordNumbers.thirdNumber)\(onceRecordNumbers.fourthNumber) - \(abCounter.aCounter) A \(abCounter.bCounter) B"
             let leftLength = recordArrayLeft.count
@@ -283,7 +288,8 @@ extension TimerGameViewController {
     /// Show the victory window via an alart
     private func victoryWindow() {
         guard let answer = model.theAnswer else { return }
-        let alert = UIAlertController(title: "正確", message: "答案：\(answer.firstNumber)\(answer.secondNumber)\(answer.thirdNumber)\(answer.fourthNumber), 時間：\(beginingSecond)秒", preferredStyle: UIAlertController.Style.alert)
+        let answerString = model.fourNumberToOneString(answer)
+        let alert = UIAlertController(title: "正確", message: "答案：" + answerString + ", 時間：\(beginingSecond)秒", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
@@ -306,8 +312,8 @@ extension TimerGameViewController {
 
     /// 傳資料到排行榜頁面
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if let controller = segue.destination as? Best10TableViewController {
-//            controller.thisArrays = addBestRecordArrays
+        if let controller = segue.destination as? LeaderboardTableViewController {
+            controller.leaderboardData = records
         }
     }
 }
@@ -315,13 +321,6 @@ extension TimerGameViewController {
 // MARK: - Button Action
 
 extension TimerGameViewController {
-
-    @IBAction private func backFirstPageButton(_ sender: Any) {
-        performSegue(withIdentifier: "backFirstPageSegue", sender: self)
-    }
-
-    @IBAction private func bestTenButton(_: Any) {}
-
     @IBAction private func resetButton(_: Any) {
         start()
     }

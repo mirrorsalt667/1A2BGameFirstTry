@@ -25,7 +25,7 @@
                                 </state>
                                 <connections>
                                     <action selector="startGameButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="ZtL-gZ-h5L"/>
-                                    <segue destination="KUJ-l6-Fw4" kind="show" identifier="idFirstSegue" customClass="firstCustomSegue" customModule="little_game" customModuleProvider="target" id="H3a-qN-aRI"/>
+                                    <segue destination="KUJ-l6-Fw4" kind="show" identifier="idFirstSegue" customClass="FirstCustomSegue" customModule="little_game" customModuleProvider="target" id="H3a-qN-aRI"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DYS-Dt-v9K">
@@ -55,6 +55,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tenTimesButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="w7q-zR-PRw"/>
+                                    <segue destination="6DK-HW-ddb" kind="show" identifier="tenTimesSegue" customClass="FirstCustomSegue" customModule="little_game" customModuleProvider="target" id="ecR-Eo-d75"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,6 +87,16 @@
             </objects>
             <point key="canvasLocation" x="-2710" y="1136"/>
         </scene>
+        <!--TenTimesGame-->
+        <scene sceneID="wUL-ZN-4y9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TenTimesGame" id="6DK-HW-ddb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GZq-yD-8E7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8SP-j0-BXr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2062" y="1293"/>
+        </scene>
         <!--TimerGame-->
         <scene sceneID="ZnM-Sb-0lM">
             <objects>
@@ -94,7 +105,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubA-bB-3W7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2062" y="894"/>
+            <point key="canvasLocation" x="-2079" y="976"/>
         </scene>
     </scenes>
     <resources>

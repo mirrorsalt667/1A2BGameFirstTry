@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="exg-LO-dZm">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--1A2B-->
+        <scene sceneID="19a-XE-QKN">
+            <objects>
+                <viewController id="hSf-qt-rg7" customClass="TenTimesGameViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yhD-46-C0x">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-rx-PSF">
+                                <rect key="frame" x="5" y="113" width="383" height="695"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SyT-jb-Ojl">
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="20.333333333333332"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXE-bs-auo">
+                                                <rect key="frame" x="0.0" y="0.0" width="191.66666666666666" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="MorningDarkGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLE-ta-hX6">
+                                                <rect key="frame" x="191.66666666666663" y="0.0" width="191.33333333333337" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" name="MorningDarkGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="eCM-0b-PUa">
+                                        <rect key="frame" x="0.0" y="27.333333333333343" width="383" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X44-I9-6Hg">
+                                                <rect key="frame" x="0.0" y="0.0" width="61.333333333333336" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHf-qL-33M">
+                                                <rect key="frame" x="64.333333333333329" y="0.0" width="61.333333333333329" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3H-ao-cDh">
+                                                <rect key="frame" x="128.66666666666666" y="0.0" width="61.333333333333343" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3j-aF-dDT">
+                                                <rect key="frame" x="193" y="0.0" width="61.333333333333343" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-zU-vD6">
+                                                <rect key="frame" x="257.33333333333331" y="0.0" width="61.333333333333314" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" name="MorningBlue3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzj-OT-HLf">
+                                                <rect key="frame" x="321.66666666666669" y="0.0" width="61.333333333333314" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PdI-pN-1li">
+                                        <rect key="frame" x="0.0" y="94.333333333333343" width="383" height="310.33333333333326"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-aT-8AS">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="310.33333333333331"/>
+                                                <color key="backgroundColor" name="customBackground"/>
+                                                <color key="sectionIndexBackgroundColor" name="customBackground"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TenTimesGameCell" id="aNi-96-sWd" customClass="TenTimesGameTableViewCell" customModule="little_game" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="50" width="383" height="40.333332061767578"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aNi-96-sWd" id="B94-5m-Nfd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="383" height="40.333332061767578"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="03X-8B-Xty">
+                                                                    <rect key="frame" x="10" y="4.9999999999999982" width="176.66666666666666" height="30.333333333333329"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC9-DK-zHr">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="19.666666666666668" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ND6-Ts-idf">
+                                                                            <rect key="frame" x="19.666666666666664" y="0.0" width="19.666666666666664" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-bt-B5m">
+                                                                            <rect key="frame" x="39.333333333333336" y="0.0" width="19.666666666666664" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4T-OM-hO2">
+                                                                            <rect key="frame" x="59.000000000000007" y="0.0" width="19.333333333333336" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1S-rh-dbm">
+                                                                            <rect key="frame" x="78.333333333333329" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVG-9O-Xpz">
+                                                                            <rect key="frame" x="98" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40K-5C-avW">
+                                                                            <rect key="frame" x="117.66666666666667" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUl-4P-k2O">
+                                                                            <rect key="frame" x="137.33333333333334" y="0.0" width="19.666666666666657" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSf-Gw-Mer">
+                                                                            <rect key="frame" x="157" y="0.0" width="19.666666666666657" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bO5-1c-mvJ">
+                                                                    <rect key="frame" x="196.66666666666663" y="4.9999999999999982" width="176.33333333333337" height="30.333333333333329"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDc-aA-VLX">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="19.333333333333332" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK3-aP-geV">
+                                                                            <rect key="frame" x="19.333333333333343" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAg-kU-Hvt">
+                                                                            <rect key="frame" x="39" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vp-GS-0Re">
+                                                                            <rect key="frame" x="58.666666666666679" y="0.0" width="19.666666666666664" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAW-wg-Gkx">
+                                                                            <rect key="frame" x="78.333333333333343" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4Z-Fx-l74">
+                                                                            <rect key="frame" x="98.000000000000028" y="0.0" width="19.666666666666671" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45X-l7-GMQ">
+                                                                            <rect key="frame" x="117.66666666666666" y="0.0" width="19.333333333333343" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIp-uu-jpW">
+                                                                            <rect key="frame" x="137.00000000000003" y="0.0" width="19.666666666666657" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningDarkGreen"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yx-MY-ao4">
+                                                                            <rect key="frame" x="156.66666666666666" y="0.0" width="19.666666666666657" height="30.333333333333332"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                                            <color key="textColor" name="MorningBlue3"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="03X-8B-Xty" firstAttribute="leading" secondItem="B94-5m-Nfd" secondAttribute="leading" constant="10" id="1nK-On-Xwa"/>
+                                                                <constraint firstAttribute="trailing" secondItem="bO5-1c-mvJ" secondAttribute="trailing" constant="10" id="GN1-Yb-6cG"/>
+                                                                <constraint firstItem="03X-8B-Xty" firstAttribute="trailing" secondItem="B94-5m-Nfd" secondAttribute="centerX" constant="-5" id="Gnd-GE-jp5"/>
+                                                                <constraint firstItem="03X-8B-Xty" firstAttribute="top" secondItem="B94-5m-Nfd" secondAttribute="top" constant="5" id="Wxv-f1-mo8"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bO5-1c-mvJ" secondAttribute="bottom" constant="5" id="aEJ-6H-ekS"/>
+                                                                <constraint firstItem="bO5-1c-mvJ" firstAttribute="leading" secondItem="B94-5m-Nfd" secondAttribute="centerX" constant="5" id="eT1-ux-K5u"/>
+                                                                <constraint firstItem="bO5-1c-mvJ" firstAttribute="top" secondItem="B94-5m-Nfd" secondAttribute="top" constant="5" id="emG-Bc-VMH"/>
+                                                                <constraint firstAttribute="bottom" secondItem="03X-8B-Xty" secondAttribute="bottom" constant="5" id="uD0-aL-qUX"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" name="customBackground"/>
+                                                        <connections>
+                                                            <outlet property="aCounterLabel" destination="wVG-9O-Xpz" id="Ut3-gu-zZf"/>
+                                                            <outlet property="aLabel" destination="40K-5C-avW" id="gkX-25-P6Y"/>
+                                                            <outlet property="a_1Label" destination="45X-l7-GMQ" id="0Je-XE-vGT"/>
+                                                            <outlet property="a_1counterLabel" destination="r4Z-Fx-l74" id="t5d-gR-L0Y"/>
+                                                            <outlet property="bCounterLabel" destination="mUl-4P-k2O" id="73x-QB-lNG"/>
+                                                            <outlet property="bLabel" destination="MSf-Gw-Mer" id="I1v-L2-rc7"/>
+                                                            <outlet property="b_1Label" destination="2Yx-MY-ao4" id="5QD-Tf-O7G"/>
+                                                            <outlet property="b_1counterLabel" destination="zIp-uu-jpW" id="qCa-jL-vQ0"/>
+                                                            <outlet property="guessing1Label" destination="fC9-DK-zHr" id="4LV-lc-7P7"/>
+                                                            <outlet property="guessing1_1Label" destination="DDc-aA-VLX" id="LcN-HH-5Fs"/>
+                                                            <outlet property="guessing2Label" destination="ND6-Ts-idf" id="lnd-pw-VEb"/>
+                                                            <outlet property="guessing2_1Label" destination="HK3-aP-geV" id="o2D-5f-qCz"/>
+                                                            <outlet property="guessing3Label" destination="S3x-bt-B5m" id="67K-MX-fIv"/>
+                                                            <outlet property="guessing3_1Label" destination="sAg-kU-Hvt" id="3zb-hL-23K"/>
+                                                            <outlet property="guessing4Label" destination="J4T-OM-hO2" id="2jd-pa-Var"/>
+                                                            <outlet property="guessing4_1Label" destination="6vp-GS-0Re" id="Fpx-eD-Xug"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="hSf-qt-rg7" id="c01-Uq-O2L"/>
+                                                    <outlet property="delegate" destination="hSf-qt-rg7" id="M8F-fH-6iB"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6T9-Mk-HXK">
+                                        <rect key="frame" x="0.0" y="411.66666666666663" width="383" height="283.33333333333337"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Zmx-02-5jv">
+                                                <rect key="frame" x="0.0" y="0.0" width="383" height="283.33333333333331"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-Sw-GVB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="383" height="68.666666666666671"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odh-fp-dyP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="rfw-xx-Vzw"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uu-6r-4Eg">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="8Uu-6r-4Eg" secondAttribute="height" multiplier="1:1" id="4jQ-sN-VwO"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="1.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="Number1Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="cjh-2j-1im"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYM-RC-GHx">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="DYM-RC-GHx" secondAttribute="height" multiplier="1:1" id="HJH-3p-dYJ"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="2.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number2Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="w39-wB-fgC"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuS-pw-xlX">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="PuS-pw-xlX" secondAttribute="height" multiplier="1:1" id="9v8-Nf-QgS"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="3.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number3Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="imn-MN-Vni"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKe-zN-DYn">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="6vW-JZ-575"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="DYM-RC-GHx" firstAttribute="centerX" secondItem="eb5-Sw-GVB" secondAttribute="centerX" id="c2t-we-vO3"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EJz-tW-JJG">
+                                                        <rect key="frame" x="0.0" y="71.666666666666742" width="383" height="68.333333333333314"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q1-qb-kiu">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="hnu-NR-9Nr"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7z-6a-lTh">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="a7z-6a-lTh" secondAttribute="height" multiplier="1:1" id="cC2-L4-L2e"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="4.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="Number4Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="ZKq-IG-DuH"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stN-VX-Wir">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="stN-VX-Wir" secondAttribute="height" multiplier="1:1" id="ad4-j0-L1X"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="5.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number5Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="Ydv-16-I3I"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-dl-xb8">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Nom-dl-xb8" secondAttribute="height" multiplier="1:1" id="TRe-fY-SEt"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="6.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number6Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="M3f-hO-nEF"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1to-9p-flI">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.333333333333329"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="vES-aB-6RP"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="stN-VX-Wir" firstAttribute="centerX" secondItem="EJz-tW-JJG" secondAttribute="centerX" id="j5j-5a-tZ5"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kpb-Hh-TzH">
+                                                        <rect key="frame" x="0.0" y="143" width="383" height="68.666666666666686"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35t-jr-Vog">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="2Q4-tL-RT6"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5K-Qf-yh7">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="S5K-Qf-yh7" secondAttribute="height" multiplier="1:1" id="WMi-at-LNH"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="7.square" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="Number7Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="ih6-TG-OcN"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWi-76-Hq8">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="sWi-76-Hq8" secondAttribute="height" multiplier="1:1" id="hB1-gH-HNC"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="8.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number8Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="zNl-t8-lQA"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp8-zB-61v">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Mp8-zB-61v" secondAttribute="height" multiplier="1:1" id="riB-Aj-fHw"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="9.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number9Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="9ko-ka-4F7"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC8-tk-PmU">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="P0X-wj-sAC"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="sWi-76-Hq8" firstAttribute="centerX" secondItem="kpb-Hh-TzH" secondAttribute="centerX" id="bq2-kj-fPk"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XA6-Zs-AiT">
+                                                        <rect key="frame" x="0.0" y="214.66666666666674" width="383" height="68.666666666666686"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72m-XM-zrb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68.666666666666671" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="zgO-IJ-Y0Y"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmv-Hx-kQO">
+                                                                <rect key="frame" x="78.666666666666657" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Xmv-Hx-kQO" secondAttribute="height" multiplier="1:1" id="Aaw-xZ-Kwu"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="pause.rectangle" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AW6-t9-tET">
+                                                                <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="AW6-t9-tET" secondAttribute="height" multiplier="1:1" id="MGu-OK-k1S"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="0.square" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="Number0Button:" destination="hSf-qt-rg7" eventType="touchUpInside" id="AQd-6C-2bw"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4T-ob-kml">
+                                                                <rect key="frame" x="235.66666666666666" y="0.0" width="68.666666666666657" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="a4T-ob-kml" secondAttribute="height" multiplier="1:1" id="eu9-rB-tt5"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                                <color key="tintColor" name="MorningOrange"/>
+                                                                <state key="normal" image="delete.left" catalog="system">
+                                                                    <color key="titleColor" name="MorningOrange"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="keyBackButton:" destination="hSf-qt-rg7" eventType="touchUpInside" id="aLe-Oc-j2a"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJx-us-l2d">
+                                                                <rect key="frame" x="314.33333333333331" y="0.0" width="68.666666666666686" height="68.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="dk5-lZ-ELW"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="AW6-t9-tET" firstAttribute="centerX" secondItem="XA6-Zs-AiT" secondAttribute="centerX" id="f22-m3-TyZ"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="customBackground"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="MorningGray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Zmx-02-5jv" secondAttribute="trailing" id="Ake-3n-73C"/>
+                                            <constraint firstItem="Zmx-02-5jv" firstAttribute="leading" secondItem="6T9-Mk-HXK" secondAttribute="leading" id="Kci-Zo-qzV"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zmx-02-5jv" secondAttribute="bottom" id="VF2-Zw-5g6"/>
+                                            <constraint firstItem="Zmx-02-5jv" firstAttribute="top" secondItem="6T9-Mk-HXK" secondAttribute="top" id="WWY-WB-jz9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rHf-MJ-c3N"/>
+                        <color key="backgroundColor" name="customBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nCF-rx-PSF" secondAttribute="trailing" constant="5" id="ICz-Ch-mEz"/>
+                            <constraint firstItem="nCF-rx-PSF" firstAttribute="top" secondItem="rHf-MJ-c3N" secondAttribute="top" constant="10" id="LQD-GL-5Dn"/>
+                            <constraint firstItem="rHf-MJ-c3N" firstAttribute="bottom" secondItem="nCF-rx-PSF" secondAttribute="bottom" constant="10" id="nqQ-et-tK0"/>
+                            <constraint firstItem="nCF-rx-PSF" firstAttribute="leading" secondItem="rHf-MJ-c3N" secondAttribute="leading" constant="5" id="yph-8o-Znx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="1A2B" id="KPR-PL-E3q">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Home" image="house.fill" catalog="system" id="rBK-5T-EjV">
+                                <color key="tintColor" name="MorningYellow"/>
+                                <connections>
+                                    <segue destination="hja-qi-M3R" kind="unwind" unwindAction="unwindToFront:" id="Buw-gT-suO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="best 20" id="sNr-Ps-IlI">
+                                <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system" symbolScale="default"/>
+                                <color key="tintColor" name="MorningYellow"/>
+                                <connections>
+                                    <segue destination="Q6U-la-PK3" kind="show" id="M85-kI-QX4"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="重來" id="1aZ-fh-mY4">
+                            <color key="tintColor" name="MorningYellow"/>
+                            <connections>
+                                <action selector="resetButton:" destination="hSf-qt-rg7" id="pfI-ng-Ugm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="counterTimeLabel" destination="OLE-ta-hX6" id="Zuj-iw-CSu"/>
+                        <outlet property="guessResultTableView" destination="ei9-aT-8AS" id="afG-Pt-9VZ"/>
+                        <outlet property="guessingTimesLabel" destination="wXE-bs-auo" id="1Ya-Ud-Z0w"/>
+                        <outlet property="keyBackButton" destination="a4T-ob-kml" id="cCE-jW-BUk"/>
+                        <outlet property="number0Button" destination="AW6-t9-tET" id="N1g-Lt-flg"/>
+                        <outlet property="number1Button" destination="8Uu-6r-4Eg" id="pWM-kG-kVf"/>
+                        <outlet property="number2Button" destination="DYM-RC-GHx" id="1Uh-sV-DJ0"/>
+                        <outlet property="number3Button" destination="PuS-pw-xlX" id="Qan-F3-t67"/>
+                        <outlet property="number4Button" destination="a7z-6a-lTh" id="PCE-tW-Mit"/>
+                        <outlet property="number5Button" destination="stN-VX-Wir" id="xuD-o1-16N"/>
+                        <outlet property="number6Button" destination="Nom-dl-xb8" id="OWu-dm-OrJ"/>
+                        <outlet property="number7Button" destination="S5K-Qf-yh7" id="dgN-5l-Tc8"/>
+                        <outlet property="number8Button" destination="sWi-76-Hq8" id="w6D-R9-Ouh"/>
+                        <outlet property="number9Button" destination="Mp8-zB-61v" id="EJ6-Tf-YLo"/>
+                        <outlet property="pauseButton" destination="Xmv-Hx-kQO" id="Y6g-wD-iQZ"/>
+                        <outlet property="showNumLabel1" destination="zHf-qL-33M" id="JdE-4g-Uhz"/>
+                        <outlet property="showNumLabel2" destination="o3H-ao-cDh" id="Ild-YA-5jB"/>
+                        <outlet property="showNumLabel3" destination="g3j-aF-dDT" id="C3X-rf-gKC"/>
+                        <outlet property="showNumLabel4" destination="cgV-zU-vD6" id="2eO-Gc-l1S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOc-fk-Grr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="hja-qi-M3R" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-959" y="1484"/>
+        </scene>
+        <!--Leaderboard-->
+        <scene sceneID="6gZ-O6-bOg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Leaderboard" id="Q6U-la-PK3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BCZ-0r-LY7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RX5-oc-CPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-279" y="1484"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9UH-9O-2xr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="exg-LO-dZm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAR-ZE-7pc">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MorningYellow"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="MorningYellow"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hSf-qt-rg7" kind="relationship" relationship="rootViewController" id="6m8-Gh-wml"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n86-8N-qi0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1836" y="1484"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="0.square" catalog="system" width="128" height="114"/>
+        <image name="1.square" catalog="system" width="128" height="114"/>
+        <image name="2.square" catalog="system" width="128" height="114"/>
+        <image name="3.square" catalog="system" width="128" height="114"/>
+        <image name="4.square" catalog="system" width="128" height="114"/>
+        <image name="5.square" catalog="system" width="128" height="114"/>
+        <image name="6.square" catalog="system" width="128" height="114"/>
+        <image name="7.square" catalog="system" width="128" height="114"/>
+        <image name="8.square" catalog="system" width="128" height="114"/>
+        <image name="9.square" catalog="system" width="128" height="114"/>
+        <image name="delete.left" catalog="system" width="128" height="102"/>
+        <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="pause.rectangle" catalog="system" width="128" height="93"/>
+        <namedColor name="MorningBlue3">
+            <color red="0.41600000858306885" green="0.59600001573562622" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningDarkGreen">
+            <color red="0.52499997615814209" green="0.7369999885559082" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningGray">
+            <color red="0.90200001001358032" green="0.92199999094009399" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningOrange">
+            <color red="0.96899998188018799" green="0.6940000057220459" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningYellow">
+            <color red="0.99199998378753662" green="0.81599998474121094" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="customBackground">
+            <color red="0.90200001001358032" green="0.92199999094009399" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

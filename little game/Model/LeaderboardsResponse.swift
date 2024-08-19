@@ -2,7 +2,17 @@
 //  LeaderboardsResponse.swift
 //  little game
 //
-//  Created by Stephen003 on 2024/8/19.
+//  Created by Stephen on 2024/8/19.
 //
 
-import Foundation
+struct Leaderboards {
+    let id: Int
+    let mode: Int
+    let seconds: Int
+    let times: String
+    let answer: String
+    let timestamp: String
+    let player_id: Int
+    let player_id_str: String
+    let player_name: String
+}

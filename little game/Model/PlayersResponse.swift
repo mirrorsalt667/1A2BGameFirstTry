@@ -2,7 +2,12 @@
 //  PlayersResponse.swift
 //  little game
 //
-//  Created by Stephen003 on 2024/8/19.
+//  Created by Stephen on 2024/8/19.
 //
 
-import Foundation
+struct Players: Codable {
+    let id: Int
+    let player_id_str: String
+    let player_name: String
+    let create_time: String
+}

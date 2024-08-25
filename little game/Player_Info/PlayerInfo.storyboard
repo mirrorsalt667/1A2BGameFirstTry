@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Player Info View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PlayerInfoViewController" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="PlayerInfoViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jI2-tB-Kik">
+                                <rect key="frame" x="9.9999999999999964" y="64" width="54.666666666666657" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="house.fill" catalog="system">
+                                    <color key="baseForegroundColor" name="MorningYellow"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="PT2-63-XGx" kind="unwind" unwindAction="unwindToFront:" id="mlK-ss-PsD"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aQ-Ch-SnM">
+                                <rect key="frame" x="30" y="326" width="333" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ojT-Do-olJ">
+                                        <rect key="frame" x="86.333333333333329" y="113" width="160.33333333333337" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暱稱:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9A-Zc-Kwz">
+                                                <rect key="frame" x="0.0" y="0.0" width="39.333333333333336" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="#TYKU989" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhu-Db-32A">
+                                                <rect key="frame" x="46.333333333333329" y="0.0" width="113.99999999999999" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To7-c7-ERB">
+                                        <rect key="frame" x="91.666666666666671" y="60.000000000000007" width="149.66666666666663" height="20.333333333333336"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="玩家ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMY-Ek-gxq">
+                                                <rect key="frame" x="0.0" y="0.0" width="55.333333333333336" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9I-Zy-Sfs">
+                                                <rect key="frame" x="55.333333333333329" y="0.0" width="19" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYKU989" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEC-cl-KMy">
+                                                <rect key="frame" x="74.333333333333343" y="0.0" width="75.333333333333343" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ojT-Do-olJ" firstAttribute="centerX" secondItem="4aQ-Ch-SnM" secondAttribute="centerX" id="BBN-qB-nG9"/>
+                                    <constraint firstItem="ojT-Do-olJ" firstAttribute="centerY" secondItem="4aQ-Ch-SnM" secondAttribute="centerY" constant="30" id="ESB-8J-2hE"/>
+                                    <constraint firstItem="To7-c7-ERB" firstAttribute="centerX" secondItem="4aQ-Ch-SnM" secondAttribute="centerX" id="IiT-6O-eHL"/>
+                                    <constraint firstItem="To7-c7-ERB" firstAttribute="centerY" secondItem="4aQ-Ch-SnM" secondAttribute="centerY" constant="-30" id="Kw4-lU-QI3"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzl-GO-WHV">
+                                <rect key="frame" x="150" y="551" width="93.333333333333314" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="修改暱稱">
+                                    <color key="baseForegroundColor" name="MorningDarkGreen"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="changeNameAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1KC-gS-hbd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="MorningBlue1"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4aQ-Ch-SnM" secondAttribute="trailing" constant="30" id="5Ck-6y-CBm"/>
+                            <constraint firstItem="4aQ-Ch-SnM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Cvu-Vc-RvP"/>
+                            <constraint firstItem="4aQ-Ch-SnM" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Lsi-5B-ulZ"/>
+                            <constraint firstItem="jI2-tB-Kik" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="SCO-PE-Hee"/>
+                            <constraint firstItem="Lzl-GO-WHV" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SeJ-lZ-EA8"/>
+                            <constraint firstItem="jI2-tB-Kik" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="T6l-1R-Lzp"/>
+                            <constraint firstItem="Lzl-GO-WHV" firstAttribute="top" secondItem="4aQ-Ch-SnM" secondAttribute="bottom" constant="25" id="hDR-dL-yxH"/>
+                            <constraint firstItem="4aQ-Ch-SnM" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-100" id="hJI-wi-dSW"/>
+                            <constraint firstItem="4aQ-Ch-SnM" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="100" id="rok-C6-yfQ"/>
+                            <constraint firstItem="4aQ-Ch-SnM" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="tXz-Fa-cpk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backToHomePageButton" destination="jI2-tB-Kik" id="Rh3-3q-Gx2"/>
+                        <outlet property="changeNameButton" destination="Lzl-GO-WHV" id="8PR-Kk-iUv"/>
+                        <outlet property="playerIdStrLabel" destination="GEC-cl-KMy" id="C7u-mK-yhl"/>
+                        <outlet property="playerNameTextField" destination="Uhu-Db-32A" id="es7-Ef-NoV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="PT2-63-XGx" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="122.90076335877862" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <namedColor name="MorningBlue1">
+            <color red="0.73299998044967651" green="0.875" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningDarkGreen">
+            <color red="0.52499997615814209" green="0.7369999885559082" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MorningYellow">
+            <color red="0.99199998378753662" green="0.81599998474121094" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -17,17 +17,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MC0-IO-WKD">
-                                <rect key="frame" x="96.666666666666686" y="626" width="95" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="  計時模式 ">
-                                    <color key="titleColor" name="MorningDarkGreen"/>
-                                </state>
-                                <connections>
-                                    <action selector="startGameButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="ZtL-gZ-h5L"/>
-                                    <segue destination="KUJ-l6-Fw4" kind="show" identifier="idFirstSegue" customClass="FirstCustomSegue" customModule="little_game" customModuleProvider="target" id="H3a-qN-aRI"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="vKc-N3-YPn">
+                                <rect key="frame" x="106.66666666666669" y="466" width="180" height="165"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVp-oe-3ho">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="vr1-0s-pO7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="開始">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="B8s-Go-Rb2" kind="popoverPresentation" identifier="PlayModePopover" popoverAnchorView="FVp-oe-3ho" id="RNG-oF-oQR">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbm-87-uvH">
+                                        <rect key="frame" x="0.0" y="43" width="180" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="排行榜">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="DhL-bc-95c" kind="popoverPresentation" identifier="LeaderboardModePopover" popoverAnchorView="zbm-87-uvH" id="CrJ-Kf-oz3">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIt-d8-F15">
+                                        <rect key="frame" x="0.0" y="86" width="180" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="舊版排行榜">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lr2-fI-CTT">
+                                        <rect key="frame" x="0.0" y="129" width="180" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="玩家資訊">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="nlK-zg-vxw" kind="show" id="uwq-Nk-H0n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DYS-Dt-v9K">
                                 <rect key="frame" x="76.666666666666686" y="299" width="240" height="127"/>
                                 <color key="backgroundColor" name="MorningBlue1"/>
@@ -47,45 +85,92 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guessing game" translatesAutoresizingMaskIntoConstraints="NO" id="FlH-e6-FUJ">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="374"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-b2-YXF">
-                                <rect key="frame" x="201.66666666666666" y="626" width="101.99999999999997" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="  10次模式  ">
-                                    <color key="titleColor" name="MorningDarkGreen"/>
-                                </state>
-                                <connections>
-                                    <action selector="tenTimesButton:" destination="M6F-8b-d5m" eventType="touchUpInside" id="w7q-zR-PRw"/>
-                                    <segue destination="6DK-HW-ddb" kind="show" identifier="tenTimesSegue" customClass="FirstCustomSegue" customModule="little_game" customModuleProvider="target" id="ecR-Eo-d75"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l6N-uG-IjB"/>
                         <color key="backgroundColor" name="MorningBlue1"/>
                         <constraints>
+                            <constraint firstItem="vKc-N3-YPn" firstAttribute="top" secondItem="DYS-Dt-v9K" secondAttribute="bottom" constant="40" id="2m3-1G-ucO"/>
                             <constraint firstItem="DYS-Dt-v9K" firstAttribute="top" secondItem="FlH-e6-FUJ" secondAttribute="bottom" constant="-75" id="6FN-RP-aig"/>
                             <constraint firstItem="DYS-Dt-v9K" firstAttribute="bottom" secondItem="qQB-gx-SAf" secondAttribute="centerY" id="Af7-ZK-S5a"/>
-                            <constraint firstItem="PpH-b2-YXF" firstAttribute="leading" secondItem="qQB-gx-SAf" secondAttribute="centerX" constant="5" id="Qcy-nJ-ndg"/>
-                            <constraint firstItem="MC0-IO-WKD" firstAttribute="top" secondItem="DYS-Dt-v9K" secondAttribute="bottom" constant="200" id="aE6-B9-pEf"/>
+                            <constraint firstItem="vKc-N3-YPn" firstAttribute="centerX" secondItem="qQB-gx-SAf" secondAttribute="centerX" id="DyU-Th-Dan"/>
                             <constraint firstItem="FlH-e6-FUJ" firstAttribute="leading" secondItem="qQB-gx-SAf" secondAttribute="leading" id="aGx-Eo-wYM"/>
                             <constraint firstItem="FlH-e6-FUJ" firstAttribute="top" secondItem="qQB-gx-SAf" secondAttribute="top" id="bh2-IJ-HgR"/>
                             <constraint firstAttribute="trailing" secondItem="FlH-e6-FUJ" secondAttribute="trailing" id="cBP-QD-zzL"/>
-                            <constraint firstItem="PpH-b2-YXF" firstAttribute="top" secondItem="DYS-Dt-v9K" secondAttribute="bottom" constant="200" id="dBc-V8-mj8"/>
                             <constraint firstItem="FlH-e6-FUJ" firstAttribute="centerX" secondItem="qQB-gx-SAf" secondAttribute="centerX" id="eSz-rs-Aif"/>
-                            <constraint firstItem="PpH-b2-YXF" firstAttribute="leading" secondItem="MC0-IO-WKD" secondAttribute="trailing" constant="10" id="hKa-mh-24Y"/>
                             <constraint firstItem="DYS-Dt-v9K" firstAttribute="centerX" secondItem="qQB-gx-SAf" secondAttribute="centerX" id="qvN-ag-w5x"/>
-                            <constraint firstItem="MC0-IO-WKD" firstAttribute="trailing" secondItem="qQB-gx-SAf" secondAttribute="centerX" constant="-5" id="yWL-AA-xFE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wl8-Io-3ZW"/>
                     <connections>
                         <outlet property="explanationTextView" destination="DYS-Dt-v9K" id="0Ba-8P-Heu"/>
-                        <outlet property="startGameButton" destination="MC0-IO-WKD" id="T3t-4U-vfS"/>
-                        <outlet property="tenTimesButton" destination="PpH-b2-YXF" id="ZV5-Vl-4Oc"/>
+                        <outlet property="leaderboardButton" destination="zbm-87-uvH" id="7lL-o6-qsn"/>
+                        <outlet property="localLeaderboardButton" destination="KIt-d8-F15" id="Mjp-h4-XdS"/>
+                        <outlet property="playerInfoButton" destination="lr2-fI-CTT" id="s4d-Hz-59R"/>
+                        <outlet property="startGameButton" destination="FVp-oe-3ho" id="G4C-qa-Iwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omK-U1-Xqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2710" y="1136"/>
+            <point key="canvasLocation" x="-2689" y="1132"/>
+        </scene>
+        <!--Game Popover View Controller-->
+        <scene sceneID="n0v-P6-BB7">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="B8s-Go-Rb2" customClass="GamePopoverViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KDQ-M1-CsO">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="180"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g4O-Eb-lm3">
+                                <rect key="frame" x="60" y="44" width="180" height="92"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWW-h8-kgy">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="aHN-KM-bTs"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="jIv-cR-fyL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="  計時模式 ">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="KUJ-l6-Fw4" kind="show" identifier="idFirstSegue" id="ubu-bn-oNv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wA-ot-2Op">
+                                        <rect key="frame" x="0.0" y="56" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Oas-3G-pfx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="  10次模式  ">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="6DK-HW-ddb" kind="show" identifier="tenTimesSegue" id="baG-7H-2vj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="syY-9u-NAV"/>
+                        <color key="backgroundColor" name="MorningBlue1"/>
+                        <constraints>
+                            <constraint firstItem="g4O-Eb-lm3" firstAttribute="centerY" secondItem="KDQ-M1-CsO" secondAttribute="centerY" id="Q8v-CK-ujK"/>
+                            <constraint firstItem="g4O-Eb-lm3" firstAttribute="centerX" secondItem="KDQ-M1-CsO" secondAttribute="centerX" id="uve-eP-eMv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TOz-J8-Wd6"/>
+                    <size key="freeformSize" width="300" height="180"/>
+                    <connections>
+                        <outlet property="countdownModeButton" destination="4wA-ot-2Op" id="GxW-Zn-i0i"/>
+                        <outlet property="timerModeButton" destination="JWW-h8-kgy" id="jzn-ch-ZfU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWx-98-sYN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1882" y="1132"/>
         </scene>
         <!--TenTimesGame-->
         <scene sceneID="wUL-ZN-4y9">
@@ -95,7 +180,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SP-j0-BXr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2062" y="1293"/>
+            <point key="canvasLocation" x="-1205" y="1206"/>
         </scene>
         <!--TimerGame-->
         <scene sceneID="ZnM-Sb-0lM">
@@ -105,7 +190,90 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubA-bB-3W7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2079" y="976"/>
+            <point key="canvasLocation" x="-1205" y="1057"/>
+        </scene>
+        <!--Leaderboard Popover View Controller-->
+        <scene sceneID="GGk-uM-4Ht">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="DhL-bc-95c" customClass="LeaderboardPopoverViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nlS-nT-6rd">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p2J-X3-0mW">
+                                <rect key="frame" x="60" y="46" width="180" height="148"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAJ-IY-btQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="EC2-QP-2Za"/>
+                                            <constraint firstAttribute="width" constant="180" id="VCi-y1-3ax"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="計時模式">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toTimerPageAction:" destination="DhL-bc-95c" eventType="touchUpInside" id="nYu-Jf-JuB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-2l-eYu">
+                                        <rect key="frame" x="0.0" y="56" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="6JT-ah-LRC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="  10次模式  ">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toCountdownPageAction:" destination="DhL-bc-95c" eventType="touchUpInside" id="s5q-8J-gpj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-Gu-sEw">
+                                        <rect key="frame" x="0.0" y="112" width="180" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Hrl-c7-RnQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Lucky Shot">
+                                            <color key="titleColor" name="MorningDarkGreen"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toLuckyPageAction:" destination="DhL-bc-95c" eventType="touchUpInside" id="qcE-Eu-4rO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NGB-TJ-Wvl"/>
+                        <color key="backgroundColor" name="MorningBlue1"/>
+                        <constraints>
+                            <constraint firstItem="p2J-X3-0mW" firstAttribute="centerX" secondItem="nlS-nT-6rd" secondAttribute="centerX" id="7vE-5L-UMj"/>
+                            <constraint firstItem="p2J-X3-0mW" firstAttribute="centerY" secondItem="nlS-nT-6rd" secondAttribute="centerY" id="POi-Ed-qnq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="M0H-ki-rFE"/>
+                    <size key="freeformSize" width="300" height="240"/>
+                    <connections>
+                        <outlet property="countdownLeaderboardButton" destination="x4L-2l-eYu" id="y8q-fU-ZMc"/>
+                        <outlet property="luckyLeaderboardButton" destination="rH5-Gu-sEw" id="0Nk-5R-CGJ"/>
+                        <outlet property="timerLeaderboardButton" destination="bAJ-IY-btQ" id="GLI-hc-0vG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMb-1s-2iJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1882.4427480916029" y="1417.605633802817"/>
+        </scene>
+        <!--PlayerInfo-->
+        <scene sceneID="Tbn-L6-abn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlayerInfo" id="nlK-zg-vxw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YAb-ho-YUP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0h-H1-Qo7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1392" y="701"/>
         </scene>
     </scenes>
     <resources>

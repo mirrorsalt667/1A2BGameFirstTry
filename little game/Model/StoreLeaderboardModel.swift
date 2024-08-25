@@ -12,6 +12,12 @@ enum GameMode {
     case tenTimesMode
 }
 
+enum LeaderboardTypes {
+    case timer
+    case countdown
+    case lucky
+}
+
 struct LeaderboardData: Codable {
     var second: String
     var guessingTimes: String
@@ -24,6 +30,7 @@ final class StoreLeaderboardModel {
     private let tenTimesModeTitle = LeaderboardData(second: "時間", guessingTimes: "剩餘", answer: "答案", date: "日期")
     private let timerModeKey = "bestRecordData"
     private let tenTimesModeKey = "tenTimesLeaderboardData"
+    private let playerDataKey = "local_player_data"
     
     /// 答對－計入排行榜
     func addNewRecord(mode: GameMode,_ newRecord: LeaderboardData, records: [LeaderboardData]) -> [LeaderboardData] {
@@ -162,5 +169,22 @@ final class StoreLeaderboardModel {
             let decoder = JSONDecoder()
             return try? decoder.decode([LeaderboardData].self, from: data)
         }
+    }
+    
+    /// Save Local Player Data
+    /// 1. first create
+    /// 2. edit nick name
+    func savePlayerData(_ player: Players) {
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(player) else { return }
+        let userDefault = UserDefaults.standard
+        userDefault.set(data, forKey: playerDataKey)
+    }
+    
+    func loadPlayerData() -> Players? {
+        let userDefault = UserDefaults.standard
+        guard let data = userDefault.data(forKey: playerDataKey) else { return nil }
+        let decoder = JSONDecoder()
+        return try? decoder.decode(Players.self, from: data)
     }
 }

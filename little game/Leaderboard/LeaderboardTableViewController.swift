@@ -8,12 +8,12 @@
 import UIKit
 
 final class LeaderboardTableViewController: UITableViewController {
-
     private let style = LeaderboardStyle()
     var leaderboardData: [LeaderboardData] = []
-    
+    var leaderboardType: LeaderboardTypes?
+
     // MARK: - View Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
@@ -30,7 +30,7 @@ final class LeaderboardTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "leaderboardCell", for: indexPath) as! LeaderboardTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell", for: indexPath) as! LeaderboardTableViewCell
         let row = indexPath.row
         cell.labelLayout()
         switch row {

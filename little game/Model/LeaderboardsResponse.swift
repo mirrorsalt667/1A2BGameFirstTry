@@ -5,7 +5,7 @@
 //  Created by Stephen on 2024/8/19.
 //
 
-struct Leaderboards {
+struct Leaderboards: Codable {
     let id: Int
     let mode: Int
     let seconds: Int

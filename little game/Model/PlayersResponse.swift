@@ -10,4 +10,5 @@ struct Players: Codable {
     let player_id_str: String
     let player_name: String
     let create_time: String
+    let has_changed: Int
 }

@@ -11,6 +11,7 @@ final class LeaderboardViewController: UIViewController {
     // Components
     
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var backButton: UIButton!
     
     // Variables
     
@@ -26,13 +27,21 @@ final class LeaderboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         getCurrentLeaderboards()
+        DispatchQueue.main.async {
+            self.backButton.setTitle("", for: .normal)
+        }
     }
     
     // MARK: - Methods
     
     private func getCurrentLeaderboards() {
-        apiRequest.getLeaderboards { result in
+        apiRequest.getLeaderboards { [weak self] result in
+            guard let self = self else { 
+                print("<ERROR> weak self.")
+                return }
             switch result {
             case .success(let data):
                 let handleData = self.splitLeaderboardsViaMode(data)
@@ -55,6 +64,7 @@ final class LeaderboardViewController: UIViewController {
     }
     
     private func splitLeaderboardsViaMode(_ total: [Leaderboards]) -> ([Leaderboards], [Leaderboards], [Leaderboards]) {
+        print(total)
         var timer = [Leaderboards]()
         var countdown = [Leaderboards]()
         var lucky = [Leaderboards]()
@@ -73,6 +83,10 @@ final class LeaderboardViewController: UIViewController {
 // MARK: - Table View
 
 extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in _: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         mainDataSource.count
     }
@@ -119,5 +133,9 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             cell.dateLabel.text = mainDataSource[row + 1].timestamp
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }

@@ -41,18 +41,18 @@ final class LeaderboardTableViewController: UITableViewController {
             cell.answerLabel.text = leaderboardData[row].answer
             cell.dateLabel.text = leaderboardData[row].date
         case 1, 2, 3:
-            style.firstThreeNumberStyle(cell.numberLabel)
+//            style.firstThreeNumberStyle(cell.numberLabel)
             cell.numberLabel.text = "👑\(row)"
             cell.numberLabel.textColor = UIColor(named: "king")
             style.cellNumberLabelStyle(cell.numberLabel.layer)
             cell.secondLabel.text = "\(leaderboardData[row].second)秒"
-            style.firstThreeNumberStyle(cell.secondLabel)
+//            style.firstThreeNumberStyle(cell.secondLabel)
             cell.guessTimesLabel.text = "\(leaderboardData[row].guessingTimes)次"
-            style.firstThreeNumberStyle(cell.guessTimesLabel)
+//            style.firstThreeNumberStyle(cell.guessTimesLabel)
             cell.answerLabel.text = leaderboardData[row].answer
-            style.firstThreeNumberStyle(cell.answerLabel)
+//            style.firstThreeNumberStyle(cell.answerLabel)
             cell.dateLabel.text = leaderboardData[row].date
-            style.firstThreeNumberStyle(cell.dateLabel)
+//            style.firstThreeNumberStyle(cell.dateLabel)
         default:
             cell.numberLabel.text = String(row)
             style.cellNumberLabelStyle(cell.numberLabel.layer)

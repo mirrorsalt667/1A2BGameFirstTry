@@ -88,7 +88,7 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        mainDataSource.count
+        mainDataSource.count + 1 // because title is the first one
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,30 +112,25 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             cell.answerLabel.text = "答案"
             cell.dateLabel.text = "日期"
         case 1, 2, 3:
-            style.firstThreeNumberStyle(cell.numberLabel)
-            cell.numberLabel.text = "👑\(row + 1)"
+            cell.numberLabel.text = "👑\(row)"
             cell.numberLabel.textColor = UIColor(named: "king")
             style.cellNumberLabelStyle(cell.numberLabel.layer)
-            cell.secondLabel.text = "\(mainDataSource[row + 1].seconds)秒"
-            style.firstThreeNumberStyle(cell.secondLabel)
-            cell.guessTimesLabel.text = "\(mainDataSource[row + 1].times)次"
-            style.firstThreeNumberStyle(cell.guessTimesLabel)
-            cell.answerLabel.text = mainDataSource[row + 1].answer
-            style.firstThreeNumberStyle(cell.answerLabel)
-            cell.dateLabel.text = mainDataSource[row + 1].timestamp
-            style.firstThreeNumberStyle(cell.dateLabel)
+            cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
+            cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
+            cell.answerLabel.text = mainDataSource[row - 1].answer
+            cell.dateLabel.text = mainDataSource[row - 1].timestamp
         default:
-            cell.numberLabel.text = String(row + 1)
+            cell.numberLabel.text = String(row)
             style.cellNumberLabelStyle(cell.numberLabel.layer)
-            cell.secondLabel.text = "\(mainDataSource[row + 1].seconds)秒"
-            cell.guessTimesLabel.text = "\(mainDataSource[row + 1].times)次"
-            cell.answerLabel.text = mainDataSource[row + 1].answer
-            cell.dateLabel.text = mainDataSource[row + 1].timestamp
+            cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
+            cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
+            cell.answerLabel.text = mainDataSource[row - 1].answer
+            cell.dateLabel.text = mainDataSource[row - 1].timestamp
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 40
     }
 }

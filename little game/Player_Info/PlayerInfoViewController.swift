@@ -20,6 +20,7 @@ final class PlayerInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerNameTextField.isEnabled = false
         buttonStyle(changeNameButton)
         backToHomePageButton.setTitle("", for: .normal)
         
@@ -28,10 +29,14 @@ final class PlayerInfoViewController: UIViewController {
                 self.playerIdStrLabel.text = player.player_id_str
                 self.playerNameTextField.text = player.player_name
                 self.changeNameButton.isHidden = (player.has_changed == 1)
-                self.playerNameTextField.isEnabled = false
             }
         } else {
             print(">>> <ERROR> Load Player Data Failed")
+            DispatchQueue.main.async {
+                self.changeNameButton.isHidden = true
+                self.playerIdStrLabel.text = "--"
+                self.playerNameTextField.text = "--"
+            }
         }
     }
     

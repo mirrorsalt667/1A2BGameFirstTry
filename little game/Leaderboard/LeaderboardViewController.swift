@@ -12,15 +12,16 @@ final class LeaderboardViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var titleTextLabel: UILabel!
     
     // Variables
     
     private let style = LeaderboardStyle()
     private let apiRequest = APIManager()
-    var timerLeaderboards = [Leaderboards]()
-    var countdownLeaderboards = [Leaderboards]()
-    var luckyLeaderboards = [Leaderboards]()
-    var mainDataSource = [Leaderboards]()
+    private var timerLeaderboards = [Leaderboards]()
+    private var countdownLeaderboards = [Leaderboards]()
+    private var luckyLeaderboards = [Leaderboards]()
+    private var mainDataSource = [Leaderboards]()
     var type: LeaderboardTypes?
     
     // MARK: - Life Cycle
@@ -32,6 +33,13 @@ final class LeaderboardViewController: UIViewController {
         getCurrentLeaderboards()
         DispatchQueue.main.async {
             self.backButton.setTitle("", for: .normal)
+            self.titleTextLabel.font = UIFont.systemFont(ofSize: 20)
+            switch self.type {
+            case .none: self.titleTextLabel.text = ""
+            case .some(.timer): self.titleTextLabel.text = "計時模式"
+            case .some(.countdown): self.titleTextLabel.text = "次數模式"
+            case .some(.lucky): self.titleTextLabel.text = "一次就猜中"
+            }
         }
     }
     
@@ -40,7 +48,7 @@ final class LeaderboardViewController: UIViewController {
     private func getCurrentLeaderboards() {
         apiRequest.getLeaderboards { [weak self] result in
             guard let self = self else { 
-                print("<ERROR> weak self.")
+                print("<ERROR> self doesn't exist")
                 return }
             switch result {
             case .success(let data):
@@ -78,6 +86,18 @@ final class LeaderboardViewController: UIViewController {
         }
         return (timer, countdown, lucky)
     }
+    
+    private func convertStringToDate(dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        
+        // Set the date format according to the API response
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        
+        // Convert the string to Date
+        let date = dateFormatter.date(from: dateString)
+        
+        return date
+    }
 }
 
 // MARK: - Table View
@@ -94,10 +114,15 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardCell", for: indexPath) as! LeaderboardCell
         let row = indexPath.row
-        cell.labelLayout()
+        if type != .lucky {
+            cell.labelLayout()
+        } else {
+            cell.luckyShotLayout()
+        }
         switch row {
         case 0:
             cell.numberLabel.text = ""
+            cell.playerNameLabel.text = "姓名"
             cell.secondLabel.text = "時間"
             switch type {
             case .some(.timer):
@@ -105,27 +130,49 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             case .some(.countdown):
                 cell.guessTimesLabel.text = "剩餘"
             case .some(.lucky):
-                cell.guessTimesLabel.text = ""
+                cell.guessTimesLabel.text = "次數"
             case .none:
                 cell.guessTimesLabel.text = ""
             }
             cell.answerLabel.text = "答案"
             cell.dateLabel.text = "日期"
         case 1, 2, 3:
-            cell.numberLabel.text = "👑\(row)"
-            cell.numberLabel.textColor = UIColor(named: "king")
-            style.cellNumberLabelStyle(cell.numberLabel.layer)
+            if type != .lucky {
+                cell.numberLabel.text = "👑\(row)"
+                cell.numberLabel.textColor = UIColor(named: "king")
+                style.cellNumberLabelStyle(cell.numberLabel.layer)
+            } else {
+                cell.numberLabel.text = "--"
+            }
+            cell.playerNameLabel.text = mainDataSource[row - 1].player_name + " #" + mainDataSource[row - 1].player_id_str
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer
-            cell.dateLabel.text = mainDataSource[row - 1].timestamp
+            let timestampStr = mainDataSource[row - 1].timestamp + "Z"
+            if let theDate = convertStringToDate(dateString: timestampStr) {
+                let dateFormat = DateFormatter()
+                dateFormat.dateFormat = "yyyy/MM/dd"
+                let str = dateFormat.string(from: theDate)
+                cell.dateLabel.text = str
+            }
         default:
-            cell.numberLabel.text = String(row)
-            style.cellNumberLabelStyle(cell.numberLabel.layer)
+            if type != .lucky {
+                cell.numberLabel.text = String(row)
+                style.cellNumberLabelStyle(cell.numberLabel.layer)
+            } else {
+                cell.numberLabel.text = "--"
+            }
+            cell.playerNameLabel.text = mainDataSource[row - 1].player_name + " #" + mainDataSource[row - 1].player_id_str
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer
-            cell.dateLabel.text = mainDataSource[row - 1].timestamp
+            let timestampStr = mainDataSource[row - 1].timestamp + "Z"
+            if let theDate = convertStringToDate(dateString: timestampStr) {
+                let dateFormat = DateFormatter()
+                dateFormat.dateFormat = "yyyy/MM/dd"
+                let str = dateFormat.string(from: theDate)
+                cell.dateLabel.text = str
+            }
         }
         return cell
     }

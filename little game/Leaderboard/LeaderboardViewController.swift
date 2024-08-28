@@ -62,6 +62,7 @@ final class LeaderboardViewController: UIViewController {
                 case .some(.lucky): self.mainDataSource = self.luckyLeaderboards
                 case .none: break
                 }
+                self.mainDataSource = sortLeaderboard(self.type!, dataSource: self.mainDataSource)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -72,7 +73,9 @@ final class LeaderboardViewController: UIViewController {
     }
     
     private func splitLeaderboardsViaMode(_ total: [Leaderboards]) -> ([Leaderboards], [Leaderboards], [Leaderboards]) {
-        print(total)
+        #if DEBUG
+        print(">>> API DATA", total)
+        #endif
         var timer = [Leaderboards]()
         var countdown = [Leaderboards]()
         var lucky = [Leaderboards]()
@@ -96,6 +99,36 @@ final class LeaderboardViewController: UIViewController {
         let date = dateFormatter.date(from: dateString)
         
         return date
+    }
+    
+    func sortLeaderboard(_ type: LeaderboardTypes, dataSource: [Leaderboards]) -> [Leaderboards]{
+        switch type {
+        case .timer: // Less seconds, the better
+            let sortedLeaderboards = dataSource.sorted {
+                if $0.seconds == $1.seconds {
+                    return Int($0.times)! < Int($1.times)!
+                } else {
+                    return $0.seconds < $1.seconds
+                }
+            }
+            return sortedLeaderboards
+        case .countdown: // More times left, the better
+            let sortedLeaderboards = dataSource.sorted {
+                if $0.times == $1.times {
+                    return $0.seconds < $1.seconds
+                } else {
+                    return Int($0.times)! > Int($1.times)!
+                }
+            }
+            return sortedLeaderboards
+        case .lucky: // sort by timestamp
+            let sortedLeaderboards = dataSource.sorted {
+                let frontDate = convertStringToDate(dateString: $0.timestamp)!
+                let LastDate = convertStringToDate(dateString: $1.timestamp)!
+                return frontDate > LastDate
+            }
+            return sortedLeaderboards
+        }
     }
 }
 

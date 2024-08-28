@@ -89,10 +89,9 @@ final class LeaderboardViewController: UIViewController {
     
     private func convertStringToDate(dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
-        
         // Set the date format according to the API response
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         // Convert the string to Date
         let date = dateFormatter.date(from: dateString)
         
@@ -148,7 +147,7 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer
-            let timestampStr = mainDataSource[row - 1].timestamp + "Z"
+            let timestampStr = mainDataSource[row - 1].timestamp
             if let theDate = convertStringToDate(dateString: timestampStr) {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "yyyy/MM/dd"
@@ -166,7 +165,7 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer
-            let timestampStr = mainDataSource[row - 1].timestamp + "Z"
+            let timestampStr = mainDataSource[row - 1].timestamp
             if let theDate = convertStringToDate(dateString: timestampStr) {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "yyyy/MM/dd"

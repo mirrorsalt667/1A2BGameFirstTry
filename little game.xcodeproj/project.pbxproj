@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		644C10812672421B009A0289 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C10802672421B009A0289 /* LeaderboardTableViewCell.swift */; };
-		645E0F1A2670BCCE00FD6703 /* variableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645E0F192670BCCE00FD6703 /* variableNumber.swift */; };
 		64631F44266E5EC800C47360 /* TimerGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64631F43266E5EC800C47360 /* TimerGameViewController.swift */; };
-		646B1281267B57ED00EDE9AB /* SecondCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */; };
 		646B1283267B7FE700EDE9AB /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B1282267B7FE700EDE9AB /* PauseViewController.swift */; };
-		646E5B0F2676136A00202834 /* FirstCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E5B0E2676136A00202834 /* FirstCustomSegue.swift */; };
 		646E5B11267613A000202834 /* FrontPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E5B10267613A000202834 /* FrontPageViewController.swift */; };
 		647B78E92671AD11001394FA /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647B78E82671AD11001394FA /* LeaderboardTableViewController.swift */; };
 		64CEFF0F2679A96A00AE7E3F /* TenTimesGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFF0E2679A96A00AE7E3F /* TenTimesGameViewController.swift */; };
@@ -62,11 +59,8 @@
 		0CF99AD95B6530E91243E1EF /* Pods-little game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-little game.release.xcconfig"; path = "Target Support Files/Pods-little game/Pods-little game.release.xcconfig"; sourceTree = "<group>"; };
 		4D2B3E7B06D043AAEC7BE27B /* Pods_little_game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_little_game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		644C10802672421B009A0289 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
-		645E0F192670BCCE00FD6703 /* variableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableNumber.swift; sourceTree = "<group>"; };
 		64631F43266E5EC800C47360 /* TimerGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerGameViewController.swift; sourceTree = "<group>"; };
-		646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomSegue.swift; sourceTree = "<group>"; };
 		646B1282267B7FE700EDE9AB /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
-		646E5B0E2676136A00202834 /* FirstCustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCustomSegue.swift; sourceTree = "<group>"; };
 		646E5B10267613A000202834 /* FrontPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewController.swift; sourceTree = "<group>"; };
 		647B78E82671AD11001394FA /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		64CEFF0E2679A96A00AE7E3F /* TenTimesGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenTimesGameViewController.swift; sourceTree = "<group>"; };
@@ -160,8 +154,6 @@
 		64FF64FB26070B3F00098C1B /* little game */ = {
 			isa = PBXGroup;
 			children = (
-				646B1280267B57ED00EDE9AB /* SecondCustomSegue.swift */,
-				645E0F192670BCCE00FD6703 /* variableNumber.swift */,
 				C761B3FB2C5207E500034A03 /* Front Page */,
 				C73A99362C5372B200FBDC8A /* Leaderboard */,
 				C761B4072C5289A500034A03 /* Model */,
@@ -210,7 +202,6 @@
 		C73A993C2C53A7C400FBDC8A /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				646E5B0E2676136A00202834 /* FirstCustomSegue.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -441,10 +432,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FF64FD26070B3F00098C1B /* AppDelegate.swift in Sources */,
-				646B1281267B57ED00EDE9AB /* SecondCustomSegue.swift in Sources */,
 				644C10812672421B009A0289 /* LeaderboardTableViewCell.swift in Sources */,
 				C73A99382C53743600FBDC8A /* LeaderboardStyle.swift in Sources */,
-				646E5B0F2676136A00202834 /* FirstCustomSegue.swift in Sources */,
 				C759B9A92C75ED6700CC7773 /* GamePopoverViewController.swift in Sources */,
 				C761B3FF2C520AE000034A03 /* FrontPageStyle.swift in Sources */,
 				64631F44266E5EC800C47360 /* TimerGameViewController.swift in Sources */,
@@ -458,7 +447,6 @@
 				C7A7C2E72C744E0F00E3FE57 /* APIManager.swift in Sources */,
 				C761B4092C5289BF00034A03 /* StoreLeaderboardModel.swift in Sources */,
 				64CEFF0F2679A96A00AE7E3F /* TenTimesGameViewController.swift in Sources */,
-				645E0F1A2670BCCE00FD6703 /* variableNumber.swift in Sources */,
 				64CEFF112679C79800AE7E3F /* TenTimesGameTableViewCell.swift in Sources */,
 				C761B4042C520E8200034A03 /* TimerGamePageStyle.swift in Sources */,
 				64FF64FF26070B3F00098C1B /* SceneDelegate.swift in Sources */,

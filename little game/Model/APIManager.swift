@@ -78,12 +78,16 @@ final class APIManager {
         #else
         let url = releaseUrlHeader + APISuffix.leaderboard.rawValue
         #endif
-        AF.request(url, method: .post, parameters: put).response { response in
+        
+        let parameters = put.toDictionary()
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).response { response in
             switch response.result {
             case .success(let data):
                 guard let data = data else { return }
                 let decoder = JSONDecoder()
                 do {
+                    let str = String(data: data, encoding: .utf8)!
+                    print(">>> \(str)")
                     let result = try decoder.decode(Leaderboards.self, from: data)
                     completion(.success(result))
                 } catch (let error) {

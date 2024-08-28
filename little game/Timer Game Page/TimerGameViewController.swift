@@ -11,7 +11,8 @@ import UIKit
 final class TimerGameViewController: UIViewController {
     private let style = TimerGamePageStyle()
     private let model = GameModel()
-    private let storeModel = StoreLeaderboardModel()
+    private let store = StoreLeaderboardModel()
+    private let api = APIManager()
     private var timer: Timer?
     /// Show which number is the user guessing
     private var inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
@@ -89,11 +90,11 @@ final class TimerGameViewController: UIViewController {
             self.recordingNumberTextViewLeft.text = contents.0
             self.recordingNumberTextViewRight.text = contents.1
         }
-        if let addBestArrays = storeModel.loadingSavedData(mode: .timerMode) {
-            records = addBestArrays
-        }
+//        if let addBestArrays = storeModel.loadingSavedData(mode: .timerMode) {
+//            records = addBestArrays
+//        }
         // 優先用秒數，次要用數字排序
-        records = storeModel.sortData(mode: .timerMode, records)
+//        records = storeModel.sortData(mode: .timerMode, records)
         
         // 開始遊戲
         start()
@@ -197,10 +198,23 @@ extension TimerGameViewController {
             // 加入排行榜
             guard let answer = model.theAnswer else { return }
             let answerString = model.fourNumberToOneString(answer)
-            let currentTime = model.getCurrentTime()
-            records = storeModel.addNewRecord(mode: .timerMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(guessingTimes), answer: answerString, date: currentTime), records: records)
+//            let currentTime = model.getCurrentTime()
+            let player = store.loadPlayerData()
+            let mode = (guessingTimes == 1) ? 2:0
+            let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(guessingTimes), answer: answerString, timestamp: "", player_id: player?.id ?? 0, player_id_str: player?.player_id_str ?? "", player_name: player?.player_name ?? "NONE")
+            print(">>> Before insert: \(record)")
+            api.insertLeaderboard(record) { [weak self] result in
+                switch result{
+                case .success(let detial):
+                    print(">>> Insert new record success: \(detial)")
+                case .failure(let error):
+                    print("<ERROR> \(error)")
+                }
+                // TODO: show score
+            }
+//            records = storeModel.addNewRecord(mode: .timerMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(guessingTimes), answer: answerString, date: currentTime), records: records)
             // 儲存資料
-            storeModel.saveData(mode: .timerMode, records)
+//            storeModel.saveData(mode: .timerMode, records)
 
         case .defeat:
             print("Defeat! not happened in this mode.")
@@ -229,7 +243,7 @@ extension TimerGameViewController {
             oneRoundReset()
 
         case let .error(errorType):
-            print("error: \(errorType)")
+            print("<ERROR>: \(errorType)")
         }
     }
 
@@ -308,14 +322,13 @@ extension TimerGameViewController {
         return (leftContent, rightContent)
     }
 
-    // MARK: - Prepare
-
-    /// 傳資料到排行榜頁面
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if let controller = segue.destination as? LeaderboardTableViewController {
-            controller.leaderboardData = records
-        }
-    }
+//
+//    /// 傳資料到排行榜頁面
+//    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+//        if let controller = segue.destination as? LeaderboardTableViewController {
+//            controller.leaderboardData = records
+//        }
+//    }
 }
 
 // MARK: - Button Action

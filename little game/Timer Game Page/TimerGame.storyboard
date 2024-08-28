@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uCO-Zf-fZH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uCO-Zf-fZH">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -399,21 +398,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="1A2B" id="mbx-R4-o8V">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Home" image="house.fill" catalog="system" id="Sji-BP-3u6">
-                                <color key="tintColor" name="MorningYellow"/>
-                                <connections>
-                                    <segue destination="NgP-UW-sBS" kind="unwind" unwindAction="unwindToFront:" id="ruk-Ic-tOs"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="best 20" id="zuC-Ha-jcM">
-                                <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system" symbolScale="default"/>
-                                <color key="tintColor" name="MorningYellow"/>
-                                <connections>
-                                    <segue destination="mSc-pS-sGF" kind="show" id="Uo3-mh-ikp"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Home" image="house.fill" catalog="system" id="Sji-BP-3u6">
+                            <color key="tintColor" name="MorningYellow"/>
+                            <connections>
+                                <segue destination="NgP-UW-sBS" kind="unwind" unwindAction="unwindToFront:" id="ruk-Ic-tOs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="重來" id="nKm-8C-oUP">
                             <color key="tintColor" name="MorningYellow"/>
                             <connections>
@@ -447,17 +437,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABx-gj-0tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="NgP-UW-sBS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-914" y="999"/>
-        </scene>
-        <!--Leaderboard-->
-        <scene sceneID="XJI-I1-ZVi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Leaderboard" id="mSc-pS-sGF" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="cyB-96-bUt"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mVn-En-lYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-262" y="800"/>
+            <point key="canvasLocation" x="-1033" y="715"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hAC-Hj-rer">
@@ -498,7 +478,6 @@
         <image name="8.square" catalog="system" width="128" height="114"/>
         <image name="9.square" catalog="system" width="128" height="114"/>
         <image name="delete.left" catalog="system" width="128" height="102"/>
-        <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="pause.rectangle" catalog="system" width="128" height="93"/>
         <namedColor name="MorningBlue3">

@@ -64,8 +64,8 @@ final class GameModel {
         while fourth == third || fourth == second || fourth == first {
             fourth = Int.random(in: 0 ... 9)
         }
-        theAnswer = FourNumbersModel(firstNumber: first, secondNumber: second, thirdNumber: third, fourthNumber: fourth)
-//        theAnswer = FourNumbersModel(firstNumber: 1, secondNumber: 2, thirdNumber: 3, fourthNumber: 5)
+//        theAnswer = FourNumbersModel(firstNumber: first, secondNumber: second, thirdNumber: third, fourthNumber: fourth)
+        theAnswer = FourNumbersModel(firstNumber: 1, secondNumber: 2, thirdNumber: 3, fourthNumber: 5)
     }
 
     // Check if the response is right

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -48,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guK-a6-W4s">
-                                <rect key="frame" x="192.5" y="533.5" width="102" height="36"/>
+                                <rect key="frame" x="192.5" y="533.5" width="105" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="  10次模式  ">
                                     <color key="titleColor" name="MorningDarkGreen"/>
@@ -369,9 +369,6 @@
                                                                 <state key="normal" image="pause.rectangle" catalog="system">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <segue destination="R95-qV-A6x" kind="show" id="Mo2-9e-j1Y"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUZ-tJ-Lhf">
                                                                 <rect key="frame" x="150" y="0.0" width="65" height="65"/>
@@ -461,10 +458,10 @@
             </objects>
             <point key="canvasLocation" x="-958" y="716"/>
         </scene>
-        <!--Pause View Controller-->
+        <!--View Controller-->
         <scene sceneID="4Gr-1e-R69">
             <objects>
-                <viewController id="R95-qV-A6x" customClass="PauseViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="R95-qV-A6x" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rwH-Ik-rVH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -482,7 +479,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpG-1P-iwI">
-                                <rect key="frame" x="40" y="109" width="295" height="287"/>
+                                <rect key="frame" x="40" y="65" width="295" height="331"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4FD-as-ucL"/>
@@ -500,20 +497,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9dj-wX-MUG"/>
-                    <connections>
-                        <outlet property="pauseImageView" destination="qpG-1P-iwI" id="NzO-kN-yI8"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDe-am-Vzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="238.83058470764618"/>
+            <point key="canvasLocation" x="71" y="235"/>
         </scene>
         <!--Best10 Table View Controller-->
         <scene sceneID="2vD-vt-97a">
             <objects>
                 <tableViewController id="MCo-GN-Ch0" customClass="Best10TableViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aaH-4E-CIb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="customBackground"/>
                         <prototypes>
@@ -1008,9 +1002,6 @@
                                                                 <state key="normal" image="pause.rectangle" catalog="system">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <segue destination="R95-qV-A6x" kind="show" id="fS1-B1-XOl"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90T-j4-1Yx">
                                                                 <rect key="frame" x="150" y="0.0" width="65" height="65"/>
@@ -1120,9 +1111,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J6w-Qm-aBu"/>
         <segue reference="S63-fb-8Ao"/>
-        <segue reference="fS1-B1-XOl"/>
         <segue reference="qGd-fT-KpM"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -325,7 +325,7 @@
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="pauseButton:" destination="baX-bk-de4" eventType="touchUpInside" id="tNg-tY-nxa"/>
+                                                                    <segue destination="JXz-R3-EVr" kind="show" id="kVd-fP-fJs"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fT-Bz-vhZ">
@@ -438,6 +438,16 @@
                 <exit id="NgP-UW-sBS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1033" y="715"/>
+        </scene>
+        <!--PauseView-->
+        <scene sceneID="3rV-kq-HNi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PauseView" id="JXz-R3-EVr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NQc-sL-RR3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3HE-gu-U2p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-360" y="715"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hAC-Hj-rer">

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="exg-LO-dZm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="exg-LO-dZm">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -466,6 +465,9 @@
                                                                 <state key="normal" image="pause.rectangle" catalog="system">
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <segue destination="Viy-fM-tm9" kind="show" id="Uda-pB-x5s"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AW6-t9-tET">
                                                                 <rect key="frame" x="157.33333333333334" y="0.0" width="68.333333333333343" height="68.666666666666671"/>
@@ -531,21 +533,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="1A2B" id="KPR-PL-E3q">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Home" image="house.fill" catalog="system" id="rBK-5T-EjV">
-                                <color key="tintColor" name="MorningYellow"/>
-                                <connections>
-                                    <segue destination="hja-qi-M3R" kind="unwind" unwindAction="unwindToFront:" id="Buw-gT-suO"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="best 20" id="sNr-Ps-IlI">
-                                <imageReference key="image" image="ellipsis.rectangle.fill" catalog="system" symbolScale="default"/>
-                                <color key="tintColor" name="MorningYellow"/>
-                                <connections>
-                                    <segue destination="Q6U-la-PK3" kind="show" id="M85-kI-QX4"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="Home" image="house.fill" catalog="system" id="rBK-5T-EjV">
+                            <color key="tintColor" name="MorningYellow"/>
+                            <connections>
+                                <segue destination="hja-qi-M3R" kind="unwind" unwindAction="unwindToFront:" id="Buw-gT-suO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="重來" id="1aZ-fh-mY4">
                             <color key="tintColor" name="MorningYellow"/>
                             <connections>
@@ -580,15 +573,15 @@
             </objects>
             <point key="canvasLocation" x="-959" y="1484"/>
         </scene>
-        <!--Leaderboard-->
-        <scene sceneID="6gZ-O6-bOg">
+        <!--PauseView-->
+        <scene sceneID="Xtx-hD-nM0">
             <objects>
-                <viewControllerPlaceholder storyboardName="Leaderboard" id="Q6U-la-PK3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="BCZ-0r-LY7"/>
+                <viewControllerPlaceholder storyboardName="PauseView" id="Viy-fM-tm9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1x5-6O-Jje"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RX5-oc-CPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWX-Ki-SHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="1484"/>
+            <point key="canvasLocation" x="-301" y="1484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9UH-9O-2xr">
@@ -627,7 +620,6 @@
         <image name="8.square" catalog="system" width="128" height="114"/>
         <image name="9.square" catalog="system" width="128" height="114"/>
         <image name="delete.left" catalog="system" width="128" height="102"/>
-        <image name="ellipsis.rectangle.fill" catalog="system" width="128" height="79"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="pause.rectangle" catalog="system" width="128" height="93"/>
         <namedColor name="MorningBlue3">

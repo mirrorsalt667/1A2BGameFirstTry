@@ -10,7 +10,8 @@ import UIKit
 final class TenTimesGameViewController: UIViewController {
     private let style = TimerGamePageStyle()
     private let model = GameModel()
-    private let storeModel = StoreLeaderboardModel()
+    private let store = StoreLeaderboardModel()
+    private let api = APIManager()
     private var timer: Timer?
 
     // 只有十次機會，故顯示猜測欄位固定
@@ -78,12 +79,12 @@ final class TenTimesGameViewController: UIViewController {
         super.viewDidLoad()
         setAppearanceAndInitial()
 
-        if let addBestArrays = storeModel.loadingSavedData(mode: .tenTimesMode) {
-            records = addBestArrays
-        }
-        
-        // 優先用秒數，次要用數字排序
-        records = storeModel.sortData(mode: .tenTimesMode, records)
+//        if let addBestArrays = storeModel.loadingSavedData(mode: .tenTimesMode) {
+//            records = addBestArrays
+//        }
+//        
+//        // 優先用秒數，次要用數字排序
+//        records = storeModel.sortData(mode: .tenTimesMode, records)
 
         // 開始遊戲
         start()
@@ -129,7 +130,7 @@ extension TenTimesGameViewController {
         style.numberButtonStyle(keyBackButton)
         style.numberButtonStyle(pauseButton)
     }
-
+    
     /// number pad action
     private func keyInNumber(_ touchNumber: Int) {
         // which is empty
@@ -154,7 +155,7 @@ extension TenTimesGameViewController {
             afterResult(result)
         }
     }
-
+    
     /// delete the last move
     private func deleteNumber() {
         // which is empty
@@ -183,15 +184,28 @@ extension TenTimesGameViewController {
             // 加入排行榜
             guard let answer = model.theAnswer else { return }
             let answerString = model.fourNumberToOneString(answer)
-            let currentTime = model.getCurrentTime()
-            records = storeModel.addNewRecord(mode: .tenTimesMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(tenGuessingCounts), answer: answerString, date: currentTime), records: records)
-            // 儲存資料
-            storeModel.saveData(mode: .tenTimesMode, records)
-
+            let player = store.loadPlayerData()
+            let mode = (tenGuessingCounts == 9) ? 2:1
+            let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(tenGuessingCounts), answer: answerString, timestamp: "", player_id: player?.id ?? 0, player_id_str: player?.player_id_str ?? "", player_name: player?.player_name ?? "NONE")
+            print(">>> Before insert: \(record)")
+            api.insertLeaderboard(record) { [weak self] result in
+                switch result{
+                case .success(let detial):
+                    print(">>> Insert new record success: \(detial)")
+                case .failure(let error):
+                    print("<ERROR> \(error)")
+                }
+                // TODO: show score
+            }
+            //            let currentTime = model.getCurrentTime()
+            //            records = storeModel.addNewRecord(mode: .tenTimesMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(tenGuessingCounts), answer: answerString, date: currentTime), records: records)
+            //            // 儲存資料
+            //            storeModel.saveData(mode: .tenTimesMode, records)
+            
         case .defeat: // 不會發生
             defeatWindow()
             gameEnd()
-
+            
         case let .continuing(abCounter):
             // record on the board
             let numberAB = NumbersAndAB(numbers: onceRecordNumbers, abs: abCounter)
@@ -204,14 +218,14 @@ extension TenTimesGameViewController {
             } else {
                 oneRoundReset()
             }
-
+            
         case let .error(errorType):
             print("error: \(errorType)")
         }
     }
-
+    
     // MARK: GameStart & reset
-
+    
     /// Game Starting
     private func start() {
         isInGame = true
@@ -246,7 +260,7 @@ extension TenTimesGameViewController {
         guessingArray = []
         guessResultTableView.reloadData()
     }
-
+    
     /// One round game end
     private func oneRoundReset() {
         onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
@@ -256,7 +270,7 @@ extension TenTimesGameViewController {
         style.emptyLabelColor(showNumLabel3)
         style.emptyLabelColor(showNumLabel4)
     }
-
+    
     /// Show the victory window via an alart
     private func victoryWindow() {
         guard let answer = model.theAnswer else { return }
@@ -265,22 +279,13 @@ extension TenTimesGameViewController {
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-
+    
     private func defeatWindow() {
         guard let answer = model.theAnswer else { return }
         let answerString = model.fourNumberToOneString(answer)
         let alertOver = UIAlertController(title: "次數用盡", message: "GG，答案：\(answerString)", preferredStyle: UIAlertController.Style.alert)
         alertOver.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         present(alertOver, animated: true, completion: nil)
-    }
-
-    // MARK: - prepare
-
-    /// 傳資料到排行榜頁面
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if let controller = segue.destination as? LeaderboardTableViewController {
-            controller.leaderboardData = records
-        }
     }
 }
 

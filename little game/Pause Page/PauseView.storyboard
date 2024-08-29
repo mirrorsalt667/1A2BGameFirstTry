@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cMn-wI-hpw">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Pause View Controller-->
+        <scene sceneID="qXj-Y6-5T3">
+            <objects>
+                <viewController id="cMn-wI-hpw" customClass="PauseViewController" customModule="little_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qnM-jW-i7S">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="休息是為了走更長遠的路" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6b-td-SAJ">
+                                <rect key="frame" x="84.333333333333329" y="607" width="224.33333333333337" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="返回後繼續" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfP-aQ-dzn">
+                                <rect key="frame" x="153" y="671" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oLq-Hv-jpX">
+                                <rect key="frame" x="40" y="104" width="313" height="443"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9sJ-um-d9d"/>
+                        <color key="backgroundColor" name="customBackground"/>
+                        <constraints>
+                            <constraint firstItem="HfP-aQ-dzn" firstAttribute="centerX" secondItem="qnM-jW-i7S" secondAttribute="centerX" id="1zV-Oh-aWU"/>
+                            <constraint firstItem="oLq-Hv-jpX" firstAttribute="leading" secondItem="9sJ-um-d9d" secondAttribute="leading" constant="40" id="7Db-NN-Z8w"/>
+                            <constraint firstItem="9sJ-um-d9d" firstAttribute="bottom" secondItem="HfP-aQ-dzn" secondAttribute="bottom" constant="126" id="9oi-nf-3Iq"/>
+                            <constraint firstItem="9sJ-um-d9d" firstAttribute="trailing" secondItem="oLq-Hv-jpX" secondAttribute="trailing" constant="40" id="NTG-lf-mYC"/>
+                            <constraint firstItem="oLq-Hv-jpX" firstAttribute="top" secondItem="9sJ-um-d9d" secondAttribute="top" constant="45" id="PQO-tc-3vF"/>
+                            <constraint firstItem="f6b-td-SAJ" firstAttribute="top" secondItem="oLq-Hv-jpX" secondAttribute="bottom" constant="60" id="SZE-ir-mkb"/>
+                            <constraint firstItem="oLq-Hv-jpX" firstAttribute="centerX" secondItem="qnM-jW-i7S" secondAttribute="centerX" id="VRy-NJ-g68"/>
+                            <constraint firstItem="f6b-td-SAJ" firstAttribute="centerX" secondItem="qnM-jW-i7S" secondAttribute="centerX" id="f6L-fo-bUP"/>
+                            <constraint firstItem="HfP-aQ-dzn" firstAttribute="top" secondItem="f6b-td-SAJ" secondAttribute="bottom" constant="40" id="rrX-hO-KsO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s1x-Xf-OEJ"/>
+                    <connections>
+                        <outlet property="pauseImageView" destination="oLq-Hv-jpX" id="mly-aT-2vZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ACs-rh-RWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-451" y="-218"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="customBackground">
+            <color red="0.90200001001358032" green="0.92199999094009399" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

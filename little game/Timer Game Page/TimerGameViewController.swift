@@ -321,14 +321,6 @@ extension TimerGameViewController {
         }
         return (leftContent, rightContent)
     }
-
-//
-//    /// 傳資料到排行榜頁面
-//    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-//        if let controller = segue.destination as? LeaderboardTableViewController {
-//            controller.leaderboardData = records
-//        }
-//    }
 }
 
 // MARK: - Button Action
@@ -395,12 +387,6 @@ extension TimerGameViewController {
     @IBAction private func number9Button(_: Any) {
         if isInGame {
             keyInNumber(9)
-        }
-    }
-
-    @IBAction private func pauseButton(_: Any) {
-        if isInGame {
-            // self.performSegue(withIdentifier: "pauseOne", sender: self)
         }
     }
 

@@ -53,6 +53,9 @@
                                         <state key="normal" title="舊版排行榜">
                                             <color key="titleColor" name="MorningDarkGreen"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Np9-s3-grm" kind="show" identifier="OldLeaderboardSegue" id="CA5-6P-FVd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lr2-fI-CTT">
                                         <rect key="frame" x="0.0" y="156" width="180" height="36"/>
@@ -191,6 +194,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubA-bB-3W7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1205" y="1057"/>
+        </scene>
+        <!--Leaderboard-->
+        <scene sceneID="FNh-HM-w3G">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Leaderboard" id="Np9-s3-grm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="O5X-6b-u5e"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kqA-S5-jjZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2689" y="1571"/>
         </scene>
         <!--Leaderboard Popover View Controller-->
         <scene sceneID="GGk-uM-4Ht">

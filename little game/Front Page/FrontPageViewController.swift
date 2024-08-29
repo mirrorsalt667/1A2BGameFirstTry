@@ -17,6 +17,9 @@ final class FrontPageViewController: UIViewController {
     private let frontPageStyle = FrontPageStyle()
     private let store = StoreLeaderboardModel()
     private let apiManager = APIManager()
+    
+    private var localTimerLeaderboards = [LeaderboardData]()
+    private var localCountdownLeaderboards = [LeaderboardData]()
 
     // MARK: - Life Cycle
 
@@ -31,6 +34,8 @@ final class FrontPageViewController: UIViewController {
         // Read old leaderboard, if data exist, then show the localLeaderboard Button
         let timerMode = store.loadingSavedData(mode: .timerMode)
         let countdownMode = store.loadingSavedData(mode: .tenTimesMode)
+        localTimerLeaderboards = timerMode ?? []
+        localCountdownLeaderboards = countdownMode ?? []
         if timerMode == nil && countdownMode == nil {
             DispatchQueue.main.async {
                 self.localLeaderboardButton.isHidden = true
@@ -47,21 +52,6 @@ final class FrontPageViewController: UIViewController {
     }
 
     @IBAction func unwindToFront(_: UIStoryboardSegue) {}
-
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-//        let screenWidth = self.view.window?.screen.bounds.width
-        if segue.identifier == "PlayModePopover" {
-            let popoverVC = segue.destination as! GamePopoverViewController
-            popoverVC.preferredContentSize = CGSize(width: 300, height: 180)
-            let popover = segue.destination.popoverPresentationController
-            popover?.delegate = self
-        } else if segue.identifier == "LeaderboardModePopover" {
-            let popoverVC = segue.destination as! LeaderboardPopoverViewController
-            popoverVC.preferredContentSize = CGSize(width: 300, height: 320)
-            let popover = segue.destination.popoverPresentationController
-            popover?.delegate = self
-        }
-    }
 }
 
 // MARK: -  Methods
@@ -93,5 +83,29 @@ extension FrontPageViewController: UIPopoverPresentationControllerDelegate {
     // To display the submenu page on mobile, without this, it will appear as a full page.
     func adaptivePresentationStyle(for _: UIPresentationController, traitCollection _: UITraitCollection) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+// MARK: - Prepare
+
+extension FrontPageViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+//        let screenWidth = self.view.window?.screen.bounds.width
+        if segue.identifier == "PlayModePopover" {
+            let popoverVC = segue.destination as! GamePopoverViewController
+            popoverVC.preferredContentSize = CGSize(width: 300, height: 180)
+            let popover = segue.destination.popoverPresentationController
+            popover?.delegate = self
+        } else if segue.identifier == "LeaderboardModePopover" {
+            let popoverVC = segue.destination as! LeaderboardPopoverViewController
+            popoverVC.preferredContentSize = CGSize(width: 300, height: 320)
+            let popover = segue.destination.popoverPresentationController
+            popover?.delegate = self
+        } else if segue.identifier == "OldLeaderboardSegue" {
+            if let viewController = segue.destination as? LeaderboardTableViewController {
+                viewController.localTimerLeaderboards = localTimerLeaderboards
+                viewController.localCountdownLeaderboards = localCountdownLeaderboards
+            }
+        }
     }
 }

@@ -20,14 +20,14 @@ enum LeaderboardTypes {
 
 struct LeaderboardData: Codable {
     var second: String
-    var guessingTimes: String
+    var guess: String
     var answer: String
     var date: String
 }
 
 final class StoreLeaderboardModel {
-    private let timerModeTitle = LeaderboardData(second: "秒數", guessingTimes: "猜", answer: "答案", date: "日期")
-    private let tenTimesModeTitle = LeaderboardData(second: "時間", guessingTimes: "剩餘", answer: "答案", date: "日期")
+    private let timerModeTitle = LeaderboardData(second: "秒數", guess: "猜", answer: "答案", date: "日期")
+    private let tenTimesModeTitle = LeaderboardData(second: "時間", guess: "剩餘", answer: "答案", date: "日期")
     private let timerModeKey = "bestRecordData" // bestRecordData
     private let tenTimesModeKey = "bestRecordData_TenTimes" // bestRecordData_TenTimes
     private let playerDataKey = "local_player_data"
@@ -133,10 +133,10 @@ final class StoreLeaderboardModel {
                 }
             }
             records.sort { arrays1, arrays2 in
-                arrays1.guessingTimes.compare(arrays2.guessingTimes, options: .numeric) == .orderedAscending
+                arrays1.guess.compare(arrays2.guess, options: .numeric) == .orderedAscending
             }
             records.sort { array_1, array_2 in
-                array_1.guessingTimes.compare(array_2.guessingTimes, options: .numeric) == .orderedSame
+                array_1.guess.compare(array_2.guess, options: .numeric) == .orderedSame
             }
             
             // 排序後 add title

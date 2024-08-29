@@ -28,8 +28,8 @@ struct LeaderboardData: Codable {
 final class StoreLeaderboardModel {
     private let timerModeTitle = LeaderboardData(second: "秒數", guessingTimes: "猜", answer: "答案", date: "日期")
     private let tenTimesModeTitle = LeaderboardData(second: "時間", guessingTimes: "剩餘", answer: "答案", date: "日期")
-    private let timerModeKey = "bestRecordData"
-    private let tenTimesModeKey = "tenTimesLeaderboardData"
+    private let timerModeKey = "bestRecordData" // bestRecordData
+    private let tenTimesModeKey = "bestRecordData_TenTimes" // bestRecordData_TenTimes
     private let playerDataKey = "local_player_data"
     
     /// 答對－計入排行榜

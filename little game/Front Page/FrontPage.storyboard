@@ -69,7 +69,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DYS-Dt-v9K">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYS-Dt-v9K">
                                 <rect key="frame" x="76.666666666666686" y="299" width="240" height="127"/>
                                 <color key="backgroundColor" name="MorningBlue1"/>
                                 <constraints>

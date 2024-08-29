@@ -16,7 +16,6 @@
 		64CEFF112679C79800AE7E3F /* TenTimesGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEFF102679C79800AE7E3F /* TenTimesGameTableViewCell.swift */; };
 		64FF64FD26070B3F00098C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FF64FC26070B3F00098C1B /* AppDelegate.swift */; };
 		64FF64FF26070B3F00098C1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FF64FE26070B3F00098C1B /* SceneDelegate.swift */; };
-		64FF650426070B3F00098C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FF650226070B3F00098C1B /* Main.storyboard */; };
 		64FF650626070B4100098C1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64FF650526070B4100098C1B /* Assets.xcassets */; };
 		64FF650926070B4100098C1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FF650726070B4100098C1B /* LaunchScreen.storyboard */; };
 		B5872A452C7EEF8D00F1116D /* little_gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5872A442C7EEF8D00F1116D /* little_gameTests.swift */; };
@@ -68,7 +67,6 @@
 		64FF64F926070B3F00098C1B /* little game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FF64FC26070B3F00098C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FF64FE26070B3F00098C1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		64FF650326070B3F00098C1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64FF650526070B4100098C1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64FF650826070B4100098C1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64FF650A26070B4100098C1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				C761B3FA2C5206E400034A03 /* Supporting File */,
 				C73A993B2C53A76300FBDC8A /* Ten Times Game */,
 				C761B4002C520C9000034A03 /* Timer Game Page */,
-				C73A993C2C53A7C400FBDC8A /* utils */,
 			);
 			path = "little game";
 			sourceTree = "<group>";
@@ -199,13 +196,6 @@
 			path = "Ten Times Game";
 			sourceTree = "<group>";
 		};
-		C73A993C2C53A7C400FBDC8A /* utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = utils;
-			sourceTree = "<group>";
-		};
 		C73A993D2C53A7E200FBDC8A /* Pause Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +213,6 @@
 				64FF64FE26070B3F00098C1B /* SceneDelegate.swift */,
 				64FF650526070B4100098C1B /* Assets.xcassets */,
 				64FF650726070B4100098C1B /* LaunchScreen.storyboard */,
-				64FF650226070B3F00098C1B /* Main.storyboard */,
 			);
 			path = "Supporting File";
 			sourceTree = "<group>";
@@ -370,7 +359,6 @@
 				64FF650626070B4100098C1B /* Assets.xcassets in Resources */,
 				C761B40B2C528BB900034A03 /* .gitignore in Resources */,
 				C73A99412C53A89800FBDC8A /* TenTimesGame.storyboard in Resources */,
-				64FF650426070B3F00098C1B /* Main.storyboard in Resources */,
 				C711FCAF2C7B7B6E009C3B77 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,14 +464,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		64FF650226070B3F00098C1B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64FF650326070B3F00098C1B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		64FF650726070B4100098C1B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

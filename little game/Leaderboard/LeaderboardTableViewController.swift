@@ -24,37 +24,41 @@ final class LeaderboardTableViewController: UITableViewController {
 
     /// Sort timer array
     private func sortTimerTableDataSource(_ input: [LeaderboardData]) -> [LeaderboardData] {
+        guard input.count != 0 else {
+            return []
+        }
+        let title = input.first!
+        var sortedLeaderboards = input
+        sortedLeaderboards.removeFirst()
         // Less seconds, the better
-        var sortedLeaderboards = input.sorted {
+        sortedLeaderboards = sortedLeaderboards.sorted {
             if $0.second == $1.second {
                 return Int($0.guess)! < Int($1.guess)!
             } else {
-                return $0.second < $1.second
+                return Int($0.second)! < Int($1.second)!
             }
         }
-        if sortedLeaderboards.count != 0 {
-            let title = sortedLeaderboards.last!
-            sortedLeaderboards.removeLast()
-            sortedLeaderboards.insert(title, at: 0)
-        }
+        sortedLeaderboards.insert(title, at: 0)
         return sortedLeaderboards
     }
-    
+
     /// Sort countdown array
-    private func sortCountdownTableDataSource(_ input: [LeaderboardData]) -> [LeaderboardData]  {
+    private func sortCountdownTableDataSource(_ input: [LeaderboardData]) -> [LeaderboardData] {
+        guard input.count != 0 else {
+            return []
+        }
+        let title = input.first!
+        var sortedLeaderboards = input
+        sortedLeaderboards.removeFirst()
         // More times left, the better
-        var sortedLeaderboards = input.sorted {
+        sortedLeaderboards = sortedLeaderboards.sorted {
             if $0.guess == $1.guess {
-                return $0.second < $1.second
+                return Int($0.second)! < Int($1.second)!
             } else {
                 return Int($0.guess)! > Int($1.guess)!
             }
         }
-        if sortedLeaderboards.count != 0 {
-            let title = sortedLeaderboards.last!
-            sortedLeaderboards.removeLast()
-            sortedLeaderboards.insert(title, at: 0)
-        }
+        sortedLeaderboards.insert(title, at: 0)
         return sortedLeaderboards
     }
 
@@ -85,7 +89,7 @@ final class LeaderboardTableViewController: UITableViewController {
         }
         return cell
     }
-    
+
     /// Show leaderboard via game type
     private func handleTableViewDataSource(cell: LeaderboardTableViewCell, row: Int, dataSource: [LeaderboardData]) {
         switch row {
@@ -112,8 +116,8 @@ final class LeaderboardTableViewController: UITableViewController {
             cell.dateLabel.text = dataSource[row].date
         }
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+    override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             if localTimerLeaderboards.isEmpty {
                 return ""

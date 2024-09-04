@@ -72,8 +72,19 @@ extension FrontPageViewController {
                 self.store.savePlayerData(player)
             case .failure(let error):
                 print(">>> generate error: \(error)")
+                let errorMessage = error.localizedDescription
+                if errorMessage.contains("Could not connect to the server") {
+                    self.alertWindow()
+                }
             }
         }
+    }
+    
+    /// Show alert window
+    private func alertWindow() {
+        let alert = UIAlertController(title: "連線錯誤", message: "伺服器連線失敗，暫時無法紀錄排行榜。", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

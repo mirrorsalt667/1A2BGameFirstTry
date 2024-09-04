@@ -12,17 +12,18 @@ final class LeaderboardCell: UITableViewCell {
 
     @IBOutlet var numberLabel: UILabel!
     @IBOutlet var playerNameLabel: UILabel!
+    @IBOutlet var playerIdLabel: UILabel!
     @IBOutlet var secondLabel: UILabel!
     @IBOutlet var guessTimesLabel: UILabel!
     @IBOutlet var answerLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
 
     // Methods
-    func labelLayout() {
+    func labelLayoutAndSetting() {
         let cellView = contentView
         let width = contentView.frame.width
         // 7 gaps
-        let widths = [width / 9, width / 6, width / 5, width / 9, width / 8, width / 4]
+        let widths = [width / 9, width / 5, width / 5, width / 9, width / 8, width / 4]
         var leftWidth = CGFloat(0)
         var totalWidth = CGFloat(0)
         for item in widths {
@@ -44,11 +45,26 @@ final class LeaderboardCell: UITableViewCell {
         playerNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             playerNameLabel.widthAnchor.constraint(equalToConstant: widths[column]),
+            playerNameLabel.heightAnchor.constraint(equalToConstant: 20),
             playerNameLabel.leftAnchor.constraint(equalTo: numberLabel.rightAnchor, constant: theLeftWidth),
             playerNameLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor)
         ])
         playerNameLabel.textAlignment = .center
-        playerNameLabel.numberOfLines = 0
+        playerNameLabel.numberOfLines = 1
+        playerNameLabel.adjustsFontSizeToFitWidth = true
+        playerNameLabel.minimumScaleFactor = 0.5
+        
+        playerIdLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerIdLabel.widthAnchor.constraint(equalToConstant: widths[column]),
+            playerIdLabel.heightAnchor.constraint(equalToConstant: 10),
+            playerIdLabel.leftAnchor.constraint(equalTo: numberLabel.rightAnchor, constant: theLeftWidth),
+            playerIdLabel.topAnchor.constraint(equalTo: playerNameLabel.bottomAnchor),
+            playerIdLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
+        ])
+        playerIdLabel.textAlignment = .center
+        playerIdLabel.numberOfLines = 1
+        playerIdLabel.font = UIFont.systemFont(ofSize: 12)
 
         column = 2
         secondLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +99,7 @@ final class LeaderboardCell: UITableViewCell {
         dateLabel.numberOfLines = 0
     }
 
-    func luckyShotLayout() {
+    func luckyShotLayoutAndSetting() {
         let cellView = contentView
         let width = contentView.frame.width
         // 4+1 gaps
@@ -107,7 +123,21 @@ final class LeaderboardCell: UITableViewCell {
             playerNameLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor)
         ])
         playerNameLabel.textAlignment = .center
-        playerNameLabel.numberOfLines = 0
+        playerNameLabel.numberOfLines = 1
+        playerNameLabel.adjustsFontSizeToFitWidth = true
+        playerNameLabel.minimumScaleFactor = 0.5
+        
+        playerIdLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerIdLabel.widthAnchor.constraint(equalToConstant: widths[column]),
+            playerIdLabel.heightAnchor.constraint(equalToConstant: 10),
+            playerIdLabel.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: theLeftWidth),
+            playerIdLabel.topAnchor.constraint(equalTo: playerNameLabel.bottomAnchor),
+            playerIdLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
+        ])
+        playerIdLabel.textAlignment = .center
+        playerIdLabel.numberOfLines = 1
+        playerIdLabel.font = UIFont.systemFont(ofSize: 12)
 
         column = 2
         secondLabel.translatesAutoresizingMaskIntoConstraints = false

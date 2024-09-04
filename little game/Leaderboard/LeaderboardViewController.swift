@@ -46,8 +46,9 @@ final class LeaderboardViewController: UIViewController {
     // MARK: - Methods
     
     private func getCurrentLeaderboards() {
-        apiRequest.getLeaderboards { [weak self] result in
-            guard let self = self else { 
+        guard let type = type else { return }
+        apiRequest.getLeaderboards(type: type) { [weak self] result in
+            guard let self = self else {
                 print("<ERROR> self doesn't exist")
                 return }
             switch result {
@@ -147,14 +148,15 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardCell", for: indexPath) as! LeaderboardCell
         let row = indexPath.row
         if type != .lucky {
-            cell.labelLayout()
+            cell.labelLayoutAndSetting()
         } else {
-            cell.luckyShotLayout()
+            cell.luckyShotLayoutAndSetting()
         }
         switch row {
         case 0:
             cell.numberLabel.text = ""
             cell.playerNameLabel.text = "姓名"
+            cell.playerIdLabel.text = ""
             cell.secondLabel.text = "時間"
             switch type {
             case .some(.timer):
@@ -176,7 +178,8 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 cell.numberLabel.text = "--"
             }
-            cell.playerNameLabel.text = mainDataSource[row - 1].player_name + " #" + mainDataSource[row - 1].player_id_str
+            cell.playerNameLabel.text = mainDataSource[row - 1].player_name
+            cell.playerIdLabel.text = "#" + mainDataSource[row - 1].player_id_str
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer
@@ -194,7 +197,8 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 cell.numberLabel.text = "--"
             }
-            cell.playerNameLabel.text = mainDataSource[row - 1].player_name + " #" + mainDataSource[row - 1].player_id_str
+            cell.playerNameLabel.text = mainDataSource[row - 1].player_name
+            cell.playerIdLabel.text = "#" + mainDataSource[row - 1].player_id_str
             cell.secondLabel.text = "\(mainDataSource[row - 1].seconds)秒"
             cell.guessTimesLabel.text = "\(mainDataSource[row - 1].times)次"
             cell.answerLabel.text = mainDataSource[row - 1].answer

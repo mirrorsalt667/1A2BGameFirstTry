@@ -7,28 +7,69 @@
 
 import Alamofire
 
-let localUrlHeader = "http://localhost:8000/"
-let releaseUrlHeader = ""
-
 typealias LeaderboardsCompletionHandler = (Result<[Leaderboards], Error>) -> Void
 typealias LeaderboardCompletionHandler = (Result<Leaderboards, Error>) -> Void
 typealias PlayersCompletionHandler = (Result<[Players], Error>) -> Void
 typealias PlayerCompletionHandler = (Result<Players, Error>) -> Void
 
 enum APISuffix: String {
-    case leaderboards
+    case timerLeaderboards = "leaderboards/timer/"
+    case countdownLeaderboards = "leaderboards/countdown/"
+    case luckyLeaderboards = "leaderboards/lucky/"
     case leaderboard
     case players
     case player
     case generate = "player/generate/"
 }
 
+private struct ReleaseURL: Codable {
+    let release_url: String
+}
+
 final class APIManager {
-    func getLeaderboards(completion: @escaping LeaderboardsCompletionHandler) {
+    
+    let localUrlHeader = "http://localhost:8000/"
+    var releaseUrlHeader = ""
+    
+    init() {
+        releaseUrlHeader = getReleaseUrl()
+        print(">>> 正式網址：", releaseUrlHeader)
+    }
+    
+    private func getReleaseUrl() -> String {
+        if let url = Bundle.main.url(forResource: "env", withExtension: "plist") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = PropertyListDecoder()
+                let result = try decoder.decode(ReleaseURL.self, from: data)
+                return result.release_url
+            } catch let error {
+                print("Error reading plist: \(error)")
+            }
+        }
+        return ""
+    }
+}
+
+// MARK: - API Methods
+    
+extension APIManager {
+    
+    func getLeaderboards(type: LeaderboardTypes, completion: @escaping LeaderboardsCompletionHandler) {
         #if DEBUG
-        let url = localUrlHeader + APISuffix.leaderboards.rawValue
+        var url = ""
+        switch type {
+        case .timer: url = localUrlHeader + APISuffix.timerLeaderboards.rawValue
+        case .countdown: url = localUrlHeader + APISuffix.countdownLeaderboards.rawValue
+        case .lucky: url = localUrlHeader + APISuffix.luckyLeaderboards.rawValue
+        }
         #else
-        let url = releaseUrlHeader + APISuffix.leaderboards.rawValue
+        var url = ""
+        switch type {
+        case .timer: url = releaseUrlHeader + APISuffix.timerLeaderboards.rawValue
+        case .countdown: url = releaseUrlHeader + APISuffix.countdownLeaderboards.rawValue
+        case .lucky: url = releaseUrlHeader + APISuffix.luckyLeaderboards.rawValue
+        }
         #endif
         AF.request(url, method: .get).response { response in
             switch response.result {

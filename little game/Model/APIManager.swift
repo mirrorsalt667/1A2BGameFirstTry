@@ -16,9 +16,9 @@ enum APISuffix: String {
     case timerLeaderboards = "leaderboards/timer/"
     case countdownLeaderboards = "leaderboards/countdown/"
     case luckyLeaderboards = "leaderboards/lucky/"
-    case leaderboard
-    case players
-    case player
+    case leaderboard = "leaderboard/"
+    case players = "players/"
+    case player = "player/"
     case generate = "player/generate/"
 }
 
@@ -33,7 +33,6 @@ final class APIManager {
     
     init() {
         releaseUrlHeader = getReleaseUrl()
-        print(">>> 正式網址：", releaseUrlHeader)
     }
     
     private func getReleaseUrl() -> String {
@@ -141,30 +140,6 @@ extension APIManager {
         }
     }
 
-    func insertPlayer(_ put: Players, completion: @escaping PlayerCompletionHandler) {
-        #if DEBUG
-        let url = localUrlHeader + APISuffix.player.rawValue
-        #else
-        let url = releaseUrlHeader + APISuffix.player.rawValue
-        #endif
-        AF.request(url, method: .post, parameters: put).response { response in
-            switch response.result {
-            case .success(let data):
-                guard let data = data else { return }
-                let decoder = JSONDecoder()
-                do {
-                    let result = try decoder.decode(Players.self, from: data)
-                    completion(.success(result))
-                } catch (let error) {
-                    print(">>> JSON Decode ERROR")
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
     func generateNewPlayer(completion: @escaping PlayerCompletionHandler) {
         #if DEBUG
         let url = localUrlHeader + APISuffix.generate.rawValue
@@ -191,9 +166,9 @@ extension APIManager {
 
     func patchPlayerName(_ id: Int, _ name: String, completion: @escaping PlayerCompletionHandler) {
         #if DEBUG
-        let url = localUrlHeader + APISuffix.player.rawValue + "/\(id)"
+        let url = localUrlHeader + APISuffix.player.rawValue + "\(id)"
         #else
-        let url = releaseUrlHeader + APISuffix.player.rawValue + "/\(id)"
+        let url = releaseUrlHeader + APISuffix.player.rawValue + "\(id)"
         #endif
         print(">>> API URL: \(url)")
         AF.request(url, method: .patch, parameters: ["player_name": name, "has_changed": true], encoding: JSONEncoding.default).response { response in

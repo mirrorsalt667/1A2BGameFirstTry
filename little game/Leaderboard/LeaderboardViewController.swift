@@ -18,6 +18,7 @@ final class LeaderboardViewController: UIViewController {
     
     private let style = LeaderboardStyle()
     private let apiRequest = APIManager()
+    private let loadingView = LoadingView()
     private var timerLeaderboards = [Leaderboards]()
     private var countdownLeaderboards = [Leaderboards]()
     private var luckyLeaderboards = [Leaderboards]()
@@ -47,9 +48,11 @@ final class LeaderboardViewController: UIViewController {
     
     private func getCurrentLeaderboards() {
         guard let type = type else { return }
+        loadingView.showLoadingView(self.view)
         apiRequest.getLeaderboards(type: type) { [weak self] result in
             guard let self = self else {
                 print("<ERROR> self doesn't exist")
+                self?.loadingView.hidingLoadingView()
                 return }
             switch result {
             case .success(let data):
@@ -65,9 +68,11 @@ final class LeaderboardViewController: UIViewController {
                 }
                 self.mainDataSource = sortLeaderboard(self.type!, dataSource: self.mainDataSource)
                 DispatchQueue.main.async {
+                    self.loadingView.hidingLoadingView()
                     self.tableView.reloadData()
                 }
             case .failure(let error):
+                self.loadingView.hidingLoadingView()
                 print(">>> Get Leaderboard Error: \(error)")
             }
         }

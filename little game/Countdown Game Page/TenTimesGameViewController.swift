@@ -30,7 +30,7 @@ final class TenTimesGameViewController: UIViewController {
             }
         }
     }
-    
+
     /// Show the time in a single game
     private var beginingSecond: Int = 0 {
         didSet {
@@ -79,13 +79,6 @@ final class TenTimesGameViewController: UIViewController {
         super.viewDidLoad()
         setAppearanceAndInitial()
 
-//        if let addBestArrays = storeModel.loadingSavedData(mode: .tenTimesMode) {
-//            records = addBestArrays
-//        }
-//        
-//        // 優先用秒數，次要用數字排序
-//        records = storeModel.sortData(mode: .tenTimesMode, records)
-
         // 開始遊戲
         start()
         if timer != nil {
@@ -116,7 +109,7 @@ extension TenTimesGameViewController {
     private func setAppearanceAndInitial() {
         tenGuessingCounts = 10
         beginingSecond = 0
-        
+
         style.numberButtonStyle(number1Button)
         style.numberButtonStyle(number2Button)
         style.numberButtonStyle(number3Button)
@@ -130,7 +123,7 @@ extension TenTimesGameViewController {
         style.numberButtonStyle(keyBackButton)
         style.numberButtonStyle(pauseButton)
     }
-    
+
     /// number pad action
     private func keyInNumber(_ touchNumber: Int) {
         // which is empty
@@ -155,7 +148,7 @@ extension TenTimesGameViewController {
             afterResult(result)
         }
     }
-    
+
     /// delete the last move
     private func deleteNumber() {
         // which is empty
@@ -173,7 +166,7 @@ extension TenTimesGameViewController {
             inputProcess.isThirdEmpty = true
         }
     }
-    
+
     /// Doing action after get result of guessing
     private func afterResult(_ result: GameResult) {
         switch result {
@@ -181,32 +174,41 @@ extension TenTimesGameViewController {
             victoryWindow()
             gameEnd()
             // leaderboard handling
-            // 加入排行榜
             guard let answer = model.theAnswer else { return }
             let answerString = model.fourNumberToOneString(answer)
             let player = store.loadPlayerData()
-            let mode = (tenGuessingCounts == 9) ? 2:1
-            let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(tenGuessingCounts), answer: answerString, timestamp: "", player_id: player?.id ?? 0, player_id_str: player?.player_id_str ?? "", player_name: player?.player_name ?? "NONE")
-            print(">>> Before insert: \(record)")
-            api.insertLeaderboard(record) { [weak self] result in
-                switch result{
-                case .success(let detial):
-                    print(">>> Insert new record success: \(detial)")
-                case .failure(let error):
-                    print("<ERROR> \(error)")
+            let mode = (tenGuessingCounts == 9) ? 2 : 1
+            if let player = player {
+                let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(tenGuessingCounts), answer: answerString, timestamp: "", player_id: player.id, player_id_str: player.player_id_str, player_name: player.player_name)
+                insertNewLeaderboardRecord(record)
+            } else {
+                print("<ERROR> Player doesn't exist")
+                print("Create again")
+                api.generateNewPlayer { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let player):
+                        print("player id: \(player.player_id_str)")
+                        self.store.savePlayerData(player)
+                        if let newPlayer = self.store.loadPlayerData() {
+                            let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(tenGuessingCounts), answer: answerString, timestamp: "", player_id: newPlayer.id, player_id_str: newPlayer.player_id_str, player_name: newPlayer.player_name)
+                            self.insertNewLeaderboardRecord(record)
+                        }
+                    case .failure(let error):
+                        print(">>> generate error: \(error)")
+                        let errorMessage = error.localizedDescription
+                        if errorMessage.contains("Could not connect to the server") {
+                            self.alertWindow()
+                        }
+                    }
                 }
-                // TODO: show score
             }
-            //            let currentTime = model.getCurrentTime()
-            //            records = storeModel.addNewRecord(mode: .tenTimesMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(tenGuessingCounts), answer: answerString, date: currentTime), records: records)
-            //            // 儲存資料
-            //            storeModel.saveData(mode: .tenTimesMode, records)
-            
+
         case .defeat: // 不會發生
             defeatWindow()
             gameEnd()
-            
-        case let .continuing(abCounter):
+
+        case .continuing(let abCounter):
             // record on the board
             let numberAB = NumbersAndAB(numbers: onceRecordNumbers, abs: abCounter)
             guessingArray.insert(numberAB, at: 0)
@@ -218,14 +220,34 @@ extension TenTimesGameViewController {
             } else {
                 oneRoundReset()
             }
-            
-        case let .error(errorType):
+
+        case .error(let errorType):
             print("error: \(errorType)")
         }
     }
-    
+
+    /// Show alert window
+    private func alertWindow() {
+        let alert = UIAlertController(title: "連線錯誤", message: "伺服器連線失敗，暫時無法紀錄排行榜。", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    /// insert new leaderboard record
+    func insertNewLeaderboardRecord(_ record: Leaderboards) {
+        print(">>> Before insert: \(record)")
+        api.insertLeaderboard(record) { [weak self] result in
+            switch result {
+            case .success(let detial):
+                print(">>> Insert new record success: \(detial)")
+            case .failure(let error):
+                print("<ERROR> \(error)")
+            }
+        }
+    }
+
     // MARK: GameStart & reset
-    
+
     /// Game Starting
     private func start() {
         isInGame = true
@@ -240,13 +262,13 @@ extension TenTimesGameViewController {
             self.beginingSecond += 1
         })
     }
-    
+
     /// Game is over
     private func gameEnd() {
         timer?.invalidate()
         isInGame = false
     }
-    
+
     /// Reset
     private func resetAll() {
         onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
@@ -260,7 +282,7 @@ extension TenTimesGameViewController {
         guessingArray = []
         guessResultTableView.reloadData()
     }
-    
+
     /// One round game end
     private func oneRoundReset() {
         onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
@@ -270,7 +292,7 @@ extension TenTimesGameViewController {
         style.emptyLabelColor(showNumLabel3)
         style.emptyLabelColor(showNumLabel4)
     }
-    
+
     /// Show the victory window via an alart
     private func victoryWindow() {
         guard let answer = model.theAnswer else { return }
@@ -279,7 +301,7 @@ extension TenTimesGameViewController {
         alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
+
     private func defeatWindow() {
         guard let answer = model.theAnswer else { return }
         let answerString = model.fourNumberToOneString(answer)
@@ -308,7 +330,7 @@ extension TenTimesGameViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "TenTimesGameCell", for: indexPath) as! TenTimesGameTableViewCell
         let leftRow = indexPath.row
         let rightRow = leftRow + 5
-        
+
         cell.guessing1Label.text = "\(guessingArray[leftRow].numbers.firstNumber)"
         cell.guessing2Label.text = "\(guessingArray[leftRow].numbers.secondNumber)"
         cell.guessing3Label.text = "\(guessingArray[leftRow].numbers.thirdNumber)"
@@ -317,10 +339,10 @@ extension TenTimesGameViewController: UITableViewDataSource, UITableViewDelegate
         cell.aLabel.text = "A"
         cell.bCounterLabel.text = "\(guessingArray[leftRow].abs.bCounter)"
         cell.bLabel.text = "B"
-        
+
         cell.addLabelStroke(cell.aCounterLabel.layer)
         cell.addLabelStroke(cell.bCounterLabel.layer)
-        
+
         if tenGuessingCounts > 4 {
             cell.guessing1_1Label.text = ""
             cell.guessing2_1Label.text = ""
@@ -330,7 +352,7 @@ extension TenTimesGameViewController: UITableViewDataSource, UITableViewDelegate
             cell.a_1Label.text = ""
             cell.b_1counterLabel.text = ""
             cell.b_1Label.text = ""
-            
+
             cell.removeLabelStroke(cell.a_1counterLabel.layer)
             cell.removeLabelStroke(cell.b_1counterLabel.layer)
         } else {
@@ -343,7 +365,7 @@ extension TenTimesGameViewController: UITableViewDataSource, UITableViewDelegate
                 cell.a_1Label.text = ""
                 cell.b_1counterLabel.text = ""
                 cell.b_1Label.text = ""
-                
+
                 cell.removeLabelStroke(cell.a_1counterLabel.layer)
                 cell.removeLabelStroke(cell.b_1counterLabel.layer)
             } else {
@@ -355,7 +377,7 @@ extension TenTimesGameViewController: UITableViewDataSource, UITableViewDelegate
                 cell.a_1Label.text = "A"
                 cell.b_1counterLabel.text = "\(guessingArray[rightRow].abs.bCounter)"
                 cell.b_1Label.text = "B"
-                
+
                 cell.addLabelStroke(cell.a_1counterLabel.layer)
                 cell.addLabelStroke(cell.b_1counterLabel.layer)
             }
@@ -435,7 +457,7 @@ extension TenTimesGameViewController {
             keyInNumber(9)
         }
     }
-    
+
     @IBAction func Number0Button(_: Any) {
         if isInGame {
             keyInNumber(0)

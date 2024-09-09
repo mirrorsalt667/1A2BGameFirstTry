@@ -16,7 +16,7 @@ final class TimerGameViewController: UIViewController {
     private var timer: Timer?
     /// Show which number is the user guessing
     private var inputProcess = InputProcessModel(isFirstEmpty: true, isSecondEmpty: true, isThirdEmpty: true, isFourthEmpty: true)
-    
+
     /// Show guessing times in a single game
     private var guessingTimes: Int = 0 {
         didSet {
@@ -26,7 +26,7 @@ final class TimerGameViewController: UIViewController {
             }
         }
     }
-    
+
     /// Show the time in a single game
     private var beginingSecond: Int = 0 {
         didSet {
@@ -40,22 +40,23 @@ final class TimerGameViewController: UIViewController {
             }
         }
     }
-    
+
     /// Record answer the user guess in a round
     private var onceRecordNumbers = FourNumbersModel(firstNumber: 0, secondNumber: 0, thirdNumber: 0, fourthNumber: 0)
-    
+
     /// Recording TextView on the left
     /// Can put 7 items in it
     private var recordArrayLeft = [String]()
     /// Recording TextView on the right
     private var recordArrayRight = [String]()
-    
+
     /// is the game starting?
     private var isInGame = false
     /// leaderboard data
     private var records = [LeaderboardData]()
 
     // MARK: Components
+
     // Number Pad
     @IBOutlet private var number0Button: UIButton!
     @IBOutlet private var number1Button: UIButton!
@@ -90,12 +91,6 @@ final class TimerGameViewController: UIViewController {
             self.recordingNumberTextViewLeft.text = contents.0
             self.recordingNumberTextViewRight.text = contents.1
         }
-//        if let addBestArrays = storeModel.loadingSavedData(mode: .timerMode) {
-//            records = addBestArrays
-//        }
-        // 優先用秒數，次要用數字排序
-//        records = storeModel.sortData(mode: .timerMode, records)
-        
         // 開始遊戲
         start()
         if timer != nil {
@@ -195,31 +190,40 @@ extension TimerGameViewController {
             victoryWindow()
             gameEnd()
             // leaderboard handling
-            // 加入排行榜
             guard let answer = model.theAnswer else { return }
             let answerString = model.fourNumberToOneString(answer)
-//            let currentTime = model.getCurrentTime()
             let player = store.loadPlayerData()
-            let mode = (guessingTimes == 1) ? 2:0
-            let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(guessingTimes), answer: answerString, timestamp: "", player_id: player?.id ?? 0, player_id_str: player?.player_id_str ?? "", player_name: player?.player_name ?? "NONE")
-            print(">>> Before insert: \(record)")
-            api.insertLeaderboard(record) { [weak self] result in
-                switch result{
-                case .success(let detial):
-                    print(">>> Insert new record success: \(detial)")
-                case .failure(let error):
-                    print("<ERROR> \(error)")
+            let mode = (guessingTimes == 1) ? 2 : 0
+            if let player = player {
+                let record = Leaderboards(id: 1, mode: mode, seconds: beginingSecond, times: String(guessingTimes), answer: answerString, timestamp: "", player_id: player.id, player_id_str: player.player_id_str, player_name: player.player_name)
+                insertNewLeaderboardRecord(record)
+            } else {
+                print("<ERROR> Player doesn't exist")
+                print("Create again")
+                api.generateNewPlayer { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let player):
+                        print("player id: \(player.player_id_str)")
+                        self.store.savePlayerData(player)
+                        if let newPlayer = self.store.loadPlayerData() {
+                            let record = Leaderboards(id: 1, mode: mode, seconds: self.beginingSecond, times: String(self.guessingTimes), answer: answerString, timestamp: "", player_id: newPlayer.id, player_id_str: newPlayer.player_id_str, player_name: newPlayer.player_name)
+                            self.insertNewLeaderboardRecord(record)
+                        }
+                    case .failure(let error):
+                        print(">>> generate error: \(error)")
+                        let errorMessage = error.localizedDescription
+                        if errorMessage.contains("Could not connect to the server") {
+                            self.alertWindow()
+                        }
+                    }
                 }
-                // TODO: show score
             }
-//            records = storeModel.addNewRecord(mode: .timerMode, LeaderboardData(second: String(beginingSecond), guessingTimes: String(guessingTimes), answer: answerString, date: currentTime), records: records)
-            // 儲存資料
-//            storeModel.saveData(mode: .timerMode, records)
 
         case .defeat:
             print("Defeat! not happened in this mode.")
 
-        case let .continuing(abCounter):
+        case .continuing(let abCounter):
             // record on the board
             let recordText = "\(onceRecordNumbers.firstNumber)\(onceRecordNumbers.secondNumber)\(onceRecordNumbers.thirdNumber)\(onceRecordNumbers.fourthNumber) - \(abCounter.aCounter) A \(abCounter.bCounter) B"
             let leftLength = recordArrayLeft.count
@@ -242,8 +246,28 @@ extension TimerGameViewController {
             }
             oneRoundReset()
 
-        case let .error(errorType):
+        case .error(let errorType):
             print("<ERROR>: \(errorType)")
+        }
+    }
+
+    /// Show alert window
+    private func alertWindow() {
+        let alert = UIAlertController(title: "連線錯誤", message: "伺服器連線失敗，暫時無法紀錄排行榜。", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
+    /// insert new leaderboard record
+    func insertNewLeaderboardRecord(_ record: Leaderboards) {
+        print(">>> Before insert: \(record)")
+        api.insertLeaderboard(record) { result in
+            switch result {
+            case .success(let detial):
+                print(">>> Insert new record success: \(detial)")
+            case .failure(let error):
+                print("<ERROR> \(error)")
+            }
         }
     }
 

@@ -31,9 +31,9 @@ final class StoreLeaderboardModel {
     private let timerModeKey = "bestRecordData" // bestRecordData
     private let tenTimesModeKey = "bestRecordData_TenTimes" // bestRecordData_TenTimes
     private let playerDataKey = "local_player_data"
-    
+
     /// 答對－計入排行榜
-    func addNewRecord(mode: GameMode,_ newRecord: LeaderboardData, records: [LeaderboardData]) -> [LeaderboardData] {
+    func addNewRecord(mode: GameMode, _ newRecord: LeaderboardData, records: [LeaderboardData]) -> [LeaderboardData] {
         var resultRecords = records
         let recordsLength = records.count
         // check if first index is title
@@ -53,7 +53,6 @@ final class StoreLeaderboardModel {
                 resultRecords.insert(tenTimesModeTitle, at: 0)
             }
             return resultRecords
-            
         } // 2 - 2個以上要比大小，超過20刪除最後一個
         else if recordsLength > 0, recordsLength < 20 {
             resultRecords.append(newRecord)
@@ -118,7 +117,7 @@ final class StoreLeaderboardModel {
             records.sort { array_1, array_2 in
                 array_1.second.compare(array_2.second, options: .numeric) == .orderedSame
             }
-            
+
             // 排序後 add title
             records.insert(timerModeTitle, at: 0)
             return records
@@ -138,7 +137,7 @@ final class StoreLeaderboardModel {
             records.sort { array_1, array_2 in
                 array_1.guess.compare(array_2.guess, options: .numeric) == .orderedSame
             }
-            
+
             // 排序後 add title
             records.insert(tenTimesModeTitle, at: 0)
             return records
@@ -170,7 +169,7 @@ final class StoreLeaderboardModel {
             return try? decoder.decode([LeaderboardData].self, from: data)
         }
     }
-    
+
     /// Save Local Player Data
     /// 1. first create
     /// 2. edit nick name
@@ -180,11 +179,16 @@ final class StoreLeaderboardModel {
         let userDefault = UserDefaults.standard
         userDefault.set(data, forKey: playerDataKey)
     }
-    
+
     func loadPlayerData() -> Players? {
         let userDefault = UserDefaults.standard
         guard let data = userDefault.data(forKey: playerDataKey) else { return nil }
         let decoder = JSONDecoder()
         return try? decoder.decode(Players.self, from: data)
+    }
+
+    func deletePlayerData() {
+        let userDefault = UserDefaults.standard
+        userDefault.removeObject(forKey: playerDataKey)
     }
 }

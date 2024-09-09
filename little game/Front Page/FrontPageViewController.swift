@@ -17,7 +17,7 @@ final class FrontPageViewController: UIViewController {
     private let frontPageStyle = FrontPageStyle()
     private let store = StoreLeaderboardModel()
     private let apiManager = APIManager()
-    
+
     private var localTimerLeaderboards = [LeaderboardData]()
     private var localCountdownLeaderboards = [LeaderboardData]()
 
@@ -45,13 +45,22 @@ final class FrontPageViewController: UIViewController {
                 self.localLeaderboardButton.isHidden = false
             }
         }
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if isFirstOpen() {
+            print("Create a new player")
             createPlayerDataAndSave()
         }
     }
 
-    @IBAction func unwindToFront(_: UIStoryboardSegue) {}
+    @IBAction func unwindToFront(_: UIStoryboardSegue) {
+        if isFirstOpen() {
+            print("Create a new player")
+            createPlayerDataAndSave()
+        }
+    }
 }
 
 // MARK: -  Methods
@@ -79,7 +88,7 @@ extension FrontPageViewController {
             }
         }
     }
-    
+
     /// Show alert window
     private func alertWindow() {
         let alert = UIAlertController(title: "連線錯誤", message: "伺服器連線失敗，暫時無法紀錄排行榜。", preferredStyle: UIAlertController.Style.alert)
